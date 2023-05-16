@@ -1,0 +1,313 @@
+/*used css*/
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1050;
+    display: none;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    outline: 0;
+}
+.largeModal {
+    max-width: 1074px !important;
+}
+.largeModal .modal-header {
+    padding: 0;
+}
+.largeModal .modal-header .modal-title {
+    padding: 0;
+    text-align: left;
+}
+
+.modalHeadernput label {
+    font-size: 15px;
+    line-height: 18px;
+    color: #3e3e3e;
+    margin: 7px 4px 4px;
+}
+.modalHeadernput input {
+    margin-right: 15px;
+}
+.modalHeadernput span {
+    margin-left: 30px;
+}
+.modalHeadernput {
+    height: auto !important;
+    margin-top: 15px;
+}
+
+.modal-dialog {
+    position: relative;
+    width: auto;
+    margin: 0.5rem;
+    pointer-events: none;
+}
+.modal-open .modal {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.modal-open {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+.modal.show .modal-dialog {
+    transform: none;
+}
+.modal.fade .modal-dialog {
+    transition: transform 0.3s ease-out;
+    transform: translate(0, -50px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .modal.fade .modal-dialog {
+        transition: none;
+    }
+}
+.customModal.width80 {
+    max-width: 80% !important;
+}
+
+.customModal.width60 {
+    max-width: 60% !important;
+}
+
+@media (min-width: 300px) and (max-width: 900px) {
+    .customModal.width60 {
+        max-width: 90% !important;
+    }
+}
+
+.modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0.3rem;
+    outline: 0;
+}
+.customModal .modal-header {
+    border: 0;
+}
+.modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 1rem 1rem;
+    border-bottom: 1px solid #e3e6f0;
+    border-top-left-radius: calc(0.3rem - 1px);
+    border-top-right-radius: calc(0.3rem - 1px);
+}
+.customModal .modal-title {
+    width: 100%;
+    text-align: center;
+    border: 0;
+    font-size: 21px;
+}
+.modal-title {
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+.customModal .modal-body {
+    padding: 10px 40px 10px;
+}
+.modal-body {
+    position: relative;
+    flex: 1 1 auto;
+    padding: 1rem;
+}
+
+.modal-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0.75rem;
+    border-top: 1px solid #e3e6f0;
+    border-bottom-right-radius: calc(0.3rem - 1px);
+    border-bottom-left-radius: calc(0.3rem - 1px);
+}
+
+.modal-footer > * {
+    margin: 0.25rem;
+}
+.modalMd {
+    max-width: 650px;
+}
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1040;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+}
+.modal.show .modal-dialog {
+    transform: none;
+}
+.modal-backdrop.fade {
+    opacity: 0;
+}
+
+.modal-backdrop.show {
+    opacity: 0.5;
+}
+
+.modal-header .edit {
+    position: absolute;
+    right: 50px;
+}
+
+.modal-header .close {
+    padding: 1rem 1rem;
+    margin: -1.5rem -1.2em -1rem auto;
+}
+
+.customModal .modal-title {
+    width: 100%;
+    text-align: center;
+    border: 0;
+    font-size: 21px;
+    /* text-transform: uppercase; */
+}
+.customModal .modal-header {
+    border: 0;
+}
+.customModal .modal-footer {
+    justify-content: center;
+    border: 0;
+    padding-bottom: 25px;
+}
+.customModal .modal-body {
+    padding: 10px 40px 10px;
+}
+.customModal .modal-body .col-form-label {
+    font-size: 14px;
+    color: #3e3e3e;
+    padding-bottom: 3px;
+    text-align: left;
+}
+
+.modal-scrollbar-measure {
+    position: absolute;
+    top: -9999px;
+    width: 50px;
+    height: 50px;
+    overflow: scroll;
+}
+
+@media (min-width: 1200px) {
+    .modal-xl {
+        max-width: 1140px;
+    }
+}
+
+@media (min-width: 576px) {
+    .modal-dialog {
+        max-width: 500px;
+        margin: 1.75rem auto;
+    }
+    .modal-dialog-scrollable {
+        max-height: calc(100% - 3.5rem);
+    }
+    .modal-dialog-scrollable .modal-content {
+        max-height: calc(100vh - 3.5rem);
+    }
+    .modal-dialog-centered {
+        min-height: calc(100% - 3.5rem);
+    }
+    .modal-dialog-centered::before {
+        height: calc(100vh - 3.5rem);
+        height: -webkit-min-content;
+        height: -moz-min-content;
+        height: min-content;
+    }
+    .modal-sm {
+        max-width: 300px;
+    }
+}
+@media (min-width: 992px) {
+    .modal-lg {
+        max-width: 800px;
+    }
+    .modal-xl {
+        max-width: 1140px;
+    }
+}
+/**/
+
+.shiment-name {
+    padding-bottom: 30px;
+}
+.shiment-name input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 18px;
+    border: 0;
+    border-bottom: 2px solid #dcdcdc;
+    outline: none !important;
+}
+.shiment-name {
+    padding-bottom: 30px;
+}
+.shiment-name input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 18px;
+    border: 0;
+    border-bottom: 2px solid #dcdcdc;
+    outline: none !important;
+}
+
+.add-btn .btn {
+    height: 35px;
+    border: 1px solid #979797;
+    width: 35px;
+    padding: 0;
+}
+.add-btn {
+    padding-left: 5px;
+    width: 35px;
+}
+.content-block {
+    margin-bottom: 30px;
+}
+.radius-0 {
+    border-radius: 0;
+}
+.data-block {
+    margin-bottom: 49px;
+}
+.form-container .row:last-child {
+    margin-bottom: 0;
+}
+.right-form-field .data-block:last-child {
+    margin-bottom: 0;
+}
+.modal-dare-picker-wrapper .react-datepicker-wrapper {
+    width: 100%;
+}
+.pdc-modal {
+    max-width: 885px !important;
+}
+
+/* button loader bug fix for react-form-builder npm ----START----*/
+.form-builder-blk.loading-button button[type='submit'] .spinner-border .visually-hidden {
+    display: none !important;
+}
+
+.form-builder-blk.loading-button button[type='submit']:after {
+    content: '' !important;
+    margin-left: 5px !important;
+}
+
+.remove-after:after {
+    display: none !important;
+}
+/* button loader bug fix for react-form-builder npm ----START----*/

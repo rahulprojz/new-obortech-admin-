@@ -1,0 +1,73 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="ISO-8859-1" />
+    <title>Obortech Notification Email</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400|Roboto:400&amp;subset=cyrillic"
+        rel="stylesheet" />
+</head>
+
+<body style="font-family: 'Roboto Condensed', sans-serif">
+    <table border="0" cellpadding="0" cellspacing="0" style="width: 394px; margin: 0 auto">
+        <tr>
+            <td style="padding: 0 0 50px"><img style="width: 200px; margin: 0 0 0 -6px"
+                    src="{{URL}}/static/templates/email-html/logo.png" alt="OBORTECH" /></td>
+        </tr>
+        <tr>
+            <td style="font-size: 21px; line-height: 25px; color: #000; font-weight: 700;">
+                {{userSharedProfileToYou}}
+            </td>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+        </tr>
+        <tr>
+            <td style="padding: 15px 0px"> <strong>CEO({{organization}})</strong> {{sharedProfileToYou}}
+                <br />
+                {{tenDaysToSeeIt}}
+            </td>
+        </tr>
+        <br />
+        <br />
+        <tr>
+            <td>
+                <a href="{{profileLink}}" target="_blank" style="text-decoration: none;">
+                    <span
+                        style="background: #000; padding: 9px 49px; color: #fff; font-size: 18px; border: 0; border-radius: 8px; font-family: 'Roboto Condensed', sans-serif; font-weight: 600; cursor: pointer;">
+                        {{seeTheProfile}}
+                    </span>
+                </a>
+            </td>
+        </tr>
+        <br />
+        <tr>
+            <td>
+                <p style="font-weight: 600; color: #000; font-size: 14px; font-family: 'Roboto Condensed', sans-serif; margin-bottom: 1px;">{{linkText}}</p>
+                <a href="{{profileLink}}" style="line-height: 22px; line-break: anywhere; color: #000; cursor: pointer; font-size: 14px; font-family: 'Roboto Condensed', sans-serif;">
+                    {{clickHere}}
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td style="font-size: 14px; line-height: 16px; color: #737373; font-weight: 500; padding: 50px 0">
+                {{oborInfo}}</td>
+        </tr>
+        <tr>
+            <td style="font-size: 12px; line-height: 16px; color: #737373; font-weight: 500; padding: 0 0 15px">
+                OBORTECHglobal OÜ, <br />
+                Harju maakond, Tallinn, Kesklinna linnaosa, <br />
+                Maakri tn 21, 10145, Estonia
+            </td>
+        </tr>
+        <tr>
+            <td style="font-size: 12px; line-height: 16px; color: #3e3e3e; font-weight: 500">www.obortech.io</td>
+        </tr>
+    </table>
+</body>
+
+</html>

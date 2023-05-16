@@ -1,0 +1,267 @@
+.form-container {
+    display: block !important;
+    width: 100%;
+}
+
+.padding15 {
+    padding: 15px 0px;
+}
+
+/*form builder css*/
+body .ot-form-builder-wrapper .react-form-builder {
+    display: flex;
+}
+
+body .ot-form-builder-wrapper .react-form-builder .col-md-9.react-form-builder-preview {
+    border: 18px solid #f1f3f5;
+    background: #ffffff;
+    padding: 60px 50px 60px 20px;
+    box-shadow: none;
+    width: 100%;
+    height: 100%;
+}
+
+.ot-form-builder-title h4 {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+body .ot-form-builder-wrapper .react-form-builder .col-md-9.react-form-builder-preview .Sortable .SortableItem.rfb-item {
+    background: #fff;
+    margin: 15px 15px;
+    box-shadow: 0px 4px 24px rgb(52 58 64 / 12%);
+    padding: 3px 19px 20px 19px;
+    border-radius: 8px;
+}
+
+body .ot-form-builder-wrapper .react-form-builder .col-md-9.react-form-builder-preview .Sortable .SortableItem.rfb-item:hover {
+    border-left: 8px solid #ec1d25;
+}
+
+body .ot-form-builder-wrapper .react-form-builder .col-md-9.react-form-builder-preview .Sortable .SortableItem.rfb-item .toolbar-header {
+    background: #fff;
+    box-shadow: none;
+    margin: 4px 0 14px 0;
+    padding: 0;
+    position: relative;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+/*
+body .ot-form-builder-wrapper .react-form-builder .col-md-9.react-form-builder-preview .Sortable .rfb-item:hover {
+    box-shadow: none;
+} */
+
+body .ot-form-builder-wrapper .react-form-builder .col-md-3.react-form-builder-toolbar .fixed-toolbar {
+    background-color: #dee2e6;
+    padding: 10px 10px;
+    box-shadow: 12.5653px 1.04711px 37.696px rgb(52 58 64 / 8%);
+    margin-top: 0;
+    /* height: 100%; */
+}
+
+body .ot-form-builder-wrapper .react-form-builder .col-md-9.react-form-builder-preview .Sortable .rfb-item .toolbar-header {
+    border-bottom: 1px solid #0000001f;
+    padding: 5px 13px;
+}
+
+body .ot-form-builder-wrapper .react-form-builder .col-md-9.react-form-builder-preview .Sortable .rfb-item .toolbar-header .toolbar-header-buttons {
+    position: absolute;
+    right: -64px;
+    top: 0;
+    margin-top: 0;
+}
+
+body .ot-form-builder-wrapper .react-form-builder .col-md-9.react-form-builder-preview .Sortable .rfb-item .toolbar-header .toolbar-header-buttons i {
+    font-size: 16px;
+    color: #fff;
+}
+
+body .ot-form-builder-wrapper .react-form-builder .col-md-9.react-form-builder-preview .Sortable .rfb-item .toolbar-header .badge.badge-secondary {
+    background: transparent;
+    color: #212529;
+    font-size: 20px;
+    letter-spacing: 0.5px;
+    vertical-align: middle;
+    padding: 15px 0 6px 0;
+    white-space: normal;
+}
+
+body .ot-form-builder-wrapper .react-form-builder .col-md-9.react-form-builder-preview .Sortable .rfb-item .toolbar-header .toolbar-header-buttons .btn.is-isolated {
+    padding: 5px 7px;
+    display: block;
+    background: #ec1d25;
+    border-radius: 35px;
+    margin: 4px 0;
+}
+
+body .ot-form-builder-wrapper .react-form-builder .col-md-9.react-form-builder-preview .Sortable .rfb-item:not(hover) .toolbar-header {
+    opacity: 1;
+}
+
+body .ot-form-builder-wrapper .react-form-builder .col-md-9.react-form-builder-preview .Sortable .rfb-item:not(hover) .toolbar-header span {
+    opacity: 1;
+}
+
+body .ot-form-builder-wrapper .react-form-builder .col-md-9.react-form-builder-preview .Sortable .rfb-item:hover .toolbar-header .toolbar-header-buttons {
+    display: block;
+}
+
+body .ot-form-builder-wrapper .react-form-builder .col-md-3.react-form-builder-toolbar {
+    overflow-y: clip;
+}
+
+body .ot-form-builder-wrapper .react-form-builder .col-md-3.react-form-builder-toolbar ul {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 0 !important;
+}
+
+body .ot-form-builder-wrapper .react-form-builder .col-md-3.react-form-builder-toolbar h4 {
+    font-size: 17px;
+    text-align: left;
+    padding: 11px 0 0 0;
+    color: #000;
+}
+
+body .ot-form-builder-wrapper .react-form-builder .col-md-3.react-form-builder-toolbar ul li {
+    cursor: pointer;
+    list-style: none;
+    margin: 5px;
+    font-size: 14px;
+    padding: 5px 4px;
+    width: 30.9%;
+    border: none;
+    color: #343a40;
+    flex-grow: 1;
+    text-align: center;
+    background: #f1f3f5;
+    border-radius: 0px;
+}
+
+body .ot-form-builder-wrapper .react-form-builder .col-md-3.react-form-builder-toolbar ul li:hover {
+    background: #ced4da;
+}
+
+body .ot-form-builder-wrapper .react-form-builder .col-md-3.react-form-builder-toolbar ul li i {
+    display: block;
+    margin: 6px 0px 9px 0px;
+    font-size: 19px;
+    color: #343a40;
+}
+
+.ot-btn-form-build-absolute button.default-css {
+    padding: 0 1px 0px 8px;
+    color: rgb(8, 106, 216);
+}
+
+.ot-btn-form-build-absolute button.default-css:focus {
+    box-shadow: none;
+}
+
+.ot-btn-form-build-absolute {
+    position: absolute;
+    top: 38px;
+    z-index: 999;
+    right: 28%;
+    margin: 3px auto;
+}
+
+.ot-btn-form-build-absolute i {
+    color: #c8ced4;
+}
+
+.col-md-9.react-form-builder-preview .form-place-holder {
+    margin: 10px;
+    border: 1px solid #bbbbbb91;
+}
+
+.form-container.ot-form-builder-wrapper .col-md-9.react-form-builder-preview .edit-form {
+    background: #f2f5f8;
+    box-shadow: 7px 0px 24px 6px #0000001f;
+    border-right: none;
+}
+
+.form-container.ot-form-builder-wrapper .col-md-9.react-form-builder-preview .edit-form h4 {
+    color: #000;
+}
+
+.form-container.ot-form-builder-wrapper .col-md-9.react-form-builder-preview .edit-form .rdw-editor-wrapper .rdw-editor-toolbar {
+    padding: 12px 5px 0;
+}
+
+.form-container.ot-form-builder-wrapper .col-md-9.react-form-builder-preview .edit-form .rdw-editor-wrapper .rdw-editor-main::-webkit-scrollbar,
+.form-container.ot-form-builder-wrapper .col-md-9.react-form-builder-preview .edit-form::-webkit-scrollbar {
+    width: 6px;
+}
+
+.form-container.ot-form-builder-wrapper .col-md-9.react-form-builder-preview .edit-form .custom-control-label {
+    vertical-align: middle;
+    font-size: 15px;
+    color: #000;
+}
+
+.form-container.ot-form-builder-wrapper .col-md-9.react-form-builder-preview .edit-form .custom-checkbox .custom-control-label::before {
+    border-radius: 3px;
+}
+
+.ot-form-builder-wrapper .has-clicked {
+    border-left: 8px solid #ec1d25;
+}
+.toolbar-header-buttons {
+    margin-top: -10px !important;
+}
+
+.react-form-builder .react-form-builder-preview .Sortable .rfb-item .toolbar-header .toolbar-header-buttons {
+    right: -25px;
+    margin-top: -55px;
+}
+.is-isolated {
+    font-size: 11px !important;
+}
+
+.formcontentShow .validation-error {
+    position: unset;
+}
+.formcontentShow .validation-error > div:first-child {
+    float: left;
+}
+.btn-toolbar {
+    justify-content: center !important;
+}
+.react-form-builder-preview .SortableItem .col-md-3 div {
+    min-width: unset !important;
+}
+.fixed-toolbar {
+    /* height: 740px !important; */
+    width: 300px;
+}
+.fixed-toolbar.sticky {
+    position: fixed;
+    top: 66px;
+    width: 300px;
+}
+.form-builder-tools .dropdown {
+    position: absolute;
+    margin: 35px 0 0 50px;
+    z-index: 999;
+}
+.form-builder-tools .dropdown button:focus,
+.form-builder-tools .dropdown button:active {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+.form-builder-tools .dropdown button.dropdown-toggle,
+.form-builder-tools .dropdown button.dropdown-toggle:active,
+.form-builder-tools .dropdown button.dropdown-toggle:focus,
+.form-builder-tools .dropdown button.dropdown-toggle:target,
+.form-builder-tools .dropdown button.dropdown-toggle:hover {
+    background-color: #f1f3f5 !important;
+    border-color: #f1f3f5 !important;
+    outline: none !important;
+    color: #343a40 !important;
+}
+*:focus {
+    outline: none !important;
+}

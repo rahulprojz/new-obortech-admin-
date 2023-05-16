@@ -1,0 +1,106 @@
+import classnames from 'classnames';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { ToastContext, useCurrentRef } from '../../hooks';
+import { Overlay } from '../Overlay';
+import { Toast } from '../Toast';
+let toastIdSequence = 1;
+export const ToastProvider = ({ defaultTimeout, noTimeout, position = 'top-right', customPadding, className, children, }) => {
+    const [toasts, setToasts] = useState([]);
+    const [closing, setClosing] = useState(false);
+    const [hovered, setHovered] = useState(false);
+    const onHover = useCallback(() => setHovered(true), []);
+    const onBlur = useCallback(() => setHovered(false), []);
+    const _pop = useCallback(() => setClosing(true), []);
+    const toastsRef = useCurrentRef(toasts);
+    const closingRef = useCurrentRef(closing);
+    useEffect(() => {
+        if (closing) {
+            const timeoutId = window.setTimeout(() => {
+                setToasts((prev) => prev.slice(1));
+                setClosing(false);
+            }, 250);
+            return () => {
+                window.clearTimeout(timeoutId);
+            };
+        }
+        return;
+    }, [closing]);
+    const { toastId, closable = true, timeout, ...toastProps } = toasts[0] || {};
+    const noTimeoutTypes = useCurrentRef(noTimeout);
+    const timeoutValue = useMemo(() => {
+        const timeoutNum = timeout ?? defaultTimeout;
+        if (!noTimeoutTypes.current)
+            return timeoutNum;
+        if (Array.isArray(noTimeoutTypes.current)) {
+            if (!noTimeoutTypes.current.length)
+                return timeoutNum;
+            if (!noTimeoutTypes.current.includes(toastProps.message))
+                return timeoutNum;
+            return 0;
+        }
+        else {
+            if (noTimeoutTypes.current !== toastProps.message)
+                return timeoutNum;
+            return 0;
+        }
+    }, [defaultTimeout, noTimeoutTypes, timeout, toastProps.message]);
+    useEffect(() => {
+        // toastId and toastProps.message are included to reset timer when message
+        // changes.
+        if (!hovered && toastId && timeoutValue && toastProps.message) {
+            const timeoutId = window.setTimeout(_pop, timeoutValue);
+            return () => window.clearTimeout(timeoutId);
+        }
+        return;
+    }, [_pop, hovered, timeoutValue, toastId, toastProps.message]);
+    const add = useCallback((toast) => {
+        const toastId = toastIdSequence++;
+        setToasts((prev) => [...prev, { ...toast, toastId }]);
+        return toastId;
+    }, []);
+    const remove = useCallback((toastId) => {
+        if (!toastsRef.current.length)
+            return;
+        const index = toastId === undefined ? 0 : toastsRef.current.findIndex((toast) => toast.toastId === toastId);
+        if (index === -1)
+            return;
+        if (index === 0)
+            return _pop();
+        setToasts((prev) => [...prev.slice(0, index), ...prev.slice(index + 1)]);
+    }, [_pop, toastsRef]);
+    const modify = useCallback((id, update) => {
+        setToasts((prev) => {
+            const index = prev.findIndex((t) => t.toastId === id);
+            if (index === -1)
+                return prev;
+            return [...prev.slice(0, index), { ...prev[index], ...update }, ...prev.slice(index + 1)];
+        });
+    }, []);
+    const exists = useCallback((id) => {
+        const index = toastsRef.current.findIndex((t) => t.toastId === id);
+        if (index === -1)
+            return false;
+        if (closingRef.current && index === 0)
+            return false;
+        return true;
+    }, [closingRef, toastsRef]);
+    const value = useMemo(() => ({ add, remove, modify, exists }), [add, remove, modify, exists]);
+    const padding = useMemo(() => {
+        if (customPadding === undefined)
+            return undefined;
+        const isTop = ['top-left', 'top', 'top-right'].includes(position);
+        return customPadding !== undefined
+            ? {
+                paddingTop: isTop ? customPadding : undefined,
+                paddingBottom: isTop ? undefined : customPadding,
+            }
+            : undefined;
+    }, [customPadding, position]);
+    const toastProviderClass = classnames('ui__toastProvider', { 'ui__toastProvider--closing': closing });
+    const toastClass = classnames('ui__toastProvider__toast', `ui__toastProvider__toast--position-${position}`, className);
+    return (React.createElement(ToastContext.Provider, { value: value },
+        toastId && (React.createElement(Overlay, null,
+            React.createElement("div", { className: toastClass, key: toastId, style: padding },
+                React.createElement(Toast, Object.assign({}, toastProps, { role: toastProps.message === 'error' ? 'alert' : 'status', "aria-live": toastProps.message === 'error' ? 'assertive' : 'polite', onMouseEnter: onHover, onMouseLeave: onBlur, className: toastProviderClass, onClose: closable ? _pop : undefined }))))),
+        children));
+};

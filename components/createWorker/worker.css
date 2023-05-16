@@ -1,0 +1,34 @@
+.text-field-wrap .input-field{
+    width: 100%;
+    padding:10px 15px;
+    border-radius:10px;
+    border:none;
+}
+ .text-field-wrap{
+     flex-wrap: wrap;
+ }
+ .text-field-wrapper{
+    flex-basis:100%;
+    margin-bottom:20px;
+ }
+ .text-field-wrap .input-field.workers-btn{
+    width: 48%;
+    background: #000;
+    color:#fff;
+    font-weight: 700;
+    font-size:15px;
+ }
+ @media (min-width: 576px){
+    .text-field-wrapper{
+        flex-basis:48%;
+    }
+    .text-field-wrap{
+        flex-wrap: wrap;
+    }
+    .text-field-wrapper{
+        margin-bottom: 0px;
+    }
+    .text-field-wrap{
+        margin-bottom: 20px;
+    }
+ }

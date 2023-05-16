@@ -1,0 +1,80 @@
+tr.hide-table-padding td{ padding:0; }
+.expand-button{ position:relative; }
+.accordion-toggle .expand-button:after{ position:absolute;left:.75rem;top:50%;transform:translate(0, -50%);content:'-'; }
+.accordion-toggle.collapsed .expand-button:after{ content:'+'; }
+.perProjectBtn{ border:1px solid rgba(206, 206, 206, 0.867);border-top-left-radius:10px;border-bottom-left-radius:10px;width:150px;color:gray;padding:5px 0px; }
+.perProjectBtnShadow{ border:1px solid rgba(206, 206, 206, 0.867);box-shadow:1px 1px 5px #888888;border-top-left-radius:10px;border-bottom-left-radius:10px;width:150px;padding:5px 0px;color:black;background-color:white; }
+.perUnit{ border:1px solid rgba(206, 206, 206, 0.867);border-top-right-radius:10px;border-bottom-right-radius:10px;width:150px;padding:5px 0px;color:gray }
+.perUnitShadow{ border-top-right-radius:10px;border-bottom-right-radius:10px;width:150px;padding:5px 0px;color:black;background-color:white;border:1px solid rgba(206, 206, 206, 0.867);box-shadow:1px 1px 5px #888888; }
+.borderProject{ border:1px solid #dadada; }
+.alertBox1{ box-shadow:1px 1px 5px rgb(182, 182, 182); }
+.projectAlert{ font-size:15px;font-weight:bold; }
+.projectIcon{ width:35px;height:35px;display:flex;justify-content:center;align-items:center;background-color:white;border-radius:50%;box-shadow:1px 1px #888;color:#FF0000; }
+.border-table{ border:0px solid !important; }
+.iconColor{ color:#888; }
+.iconColorShow{ color:#FF0000 !important; }
+.projectPerUnit{ position:fixed; }
+.projectUl{ background-color:#000;padding:6px 0px;font-size:14px;margin:0; }
+.projectLast{ width:15%;text-align:center;color:white; }
+.projectVerticalTop{ vertical-align: top !important; }
+.projectInnerTable  tr td { padding: 0px 0px 10px 0px  !important}
+.projectAction1{ display: flex; flex-direction: row; justify-content: flex-start; align-items: center; vertical-align: top;  }
+.projectAction{ width:10%;text-align:center;color:white; }
+.projectGroup{ list-style:none;width:200px !important; }
+.projectTrash{ list-style:none;width:100px;text-align:center; }
+.projectToggleArea{ width:500px;margin-left:12%; }
+.projectToggleArea h5{ font-size:15px; }
+.projectArea{ border:1px solid #FF0000;border-radius:6px;width:80%;margin:auto; }
+.projectAreaShow{ border:1px solid #FF0000;border-radius:6px; }
+.btnProject{ width:80px;height:30px;font-size:15px;padding:0; }
+.projectIcon2{ width:30px;height:30px;display:flex;justify-content:center;align-items:center;background-color:white;border-radius:50%;box-shadow:1px 1px #888;color:#FF0000; margin: 10px 0 0 8px; }
+.projectToggleAreaItem{ margin-left:60%;width:500px; }
+.projectToggleAreaItem h5{ font-size:15px; }
+.projectToggleAreaContainer{ margin-left:44%;width:500px; }
+.projectToggleAreaContainer h5{ font-size:15px; }
+.projectToggleAreaTruck{ margin-left:28%;width:500px; }
+.projectToggleAreaTruck h5{ font-size:15px; }
+.backwardBtnBg{ width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:1px 1px 18px rgb(182, 182, 182); }
+.backwardBtn{ border:none;background-color:transparent;padding:0px;color:#888;font-size:30px; }
+.forwardBtnBg{ width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:1px 1px 18px rgb(182, 182, 182); }
+.forwardBtn{ border:none;color:#FF0000;font-size:30px;background-color:transparent; }
+.tempContainer{ width:140px;text-align:center;font-size:14px; }
+.tempContainer{ width:100px;text-align:center;font-size:14px; }
+.OccContainer{ width:120px;text-align:center;font-size:14px; }
+.ProjectContainertemp{ width: 80%; margin-top: 15px; }
+.ProjectContainertemp2{ width:20%; }
+.largeBtn{ width:190px; }
+.ProjectTableHeader{ width:15%; }
+@media only screen and (max-width:1440px){ .projectArea{ width:100%;padding:10px; }
+}
+@media only screen and (max-width:1280px){ .ProjectContainertemp{ width:45%;margin-left:15px; }
+.ProjectContainertemp2{ width:45%;margin-top:15px;margin-left:auto;margin-right:auto; }
+}
+@media only screen and (max-width:1024px){ .ProjectContainertemp{ width:90%;margin:10px 0px;margin-left:auto;margin-right:auto; }
+.ProjectContainertemp2{ width:90%;margin-left:auto;margin-right:auto; }
+.projectSelect{ width:100px !important; }
+.projectArea{ width:100%;padding:10px; }
+}
+@media only screen and (max-width:992px){ .ProjectContainertemp{ width:90%;margin-left:auto;margin-right:auto; }
+.ProjectContainertemp2{ width:90%;margin-left:auto;margin-right:auto; }
+.projectArea{ width:100%;padding:10px;margin-left:0px; }
+}
+@media only screen and (max-width:768px){ .ProjectContainertemp{ width:90%;margin-left:auto;margin-right:auto; }
+.ProjectContainertemp2{ width:90%;margin-left:auto;margin-right:auto; }
+.perProjectBtn{ width:100px;font-size:14px; }
+.perProjectBtnShadow{ width:100px;font-size:14px; }
+.perUnit{ width:100px;font-size:14px; }
+.perUnitShadow{ width:100px;font-size:14px; }
+}
+@media only screen and (max-width:576px){ .ProjectContainertemp{ margin:0;width:95%; }
+.ProjectContainertemp2{ margin:0;width:95%; }
+.perProjectBtn{ width:80px;font-size:14px; }
+.perProjectBtnShadow{ width:80px;font-size:14px; }
+.perUnit{ width:80px;font-size:14px; }
+.perUnitShadow{ width:80px;font-size:14px; }
+}
+
+.sw-btn-col-1{ width: 86px; padding-top: 10px; }
+.sw-btn-col-2{ width: 100px; text-align: center; padding-top: 8px; }
+.sw-btn-col-3{ width: 100px; padding-top: 10px; }
+.rounded{ border-radius: 3px !important;}

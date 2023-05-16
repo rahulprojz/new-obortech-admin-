@@ -1,0 +1,75 @@
+# This workflow will rollback to specific image tag if application working is not stable
+
+# on: [workflow_dispatch]
+ 
+on:
+  workflow_dispatch:
+    inputs:
+      image_id:
+        description: Enter Image tag Id for Rollback
+        required: true
+
+name: RollBack to specific image tag application level
+
+env:
+  IMAGE_TAG: ${{ github.event.inputs.image_id }}
+  KUBE_NAMESPACE: hyperledger
+  EKS_CLUSTER: obortech-staging
+  DEPLOYMENT_NAME: obortech-admin
+  ECR_REPOSITORY: obortech-admin-staging
+
+jobs:
+  rollback:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+    environment: staging
+
+    steps:
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ap-southeast-1
+
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1
+
+    - name: Deploy to EKS
+      env:
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+      run: |
+        aws eks --region ap-southeast-1 update-kubeconfig --name $EKS_CLUSTER
+        #kubectl get pods -n $KUBE_NAMESPACE
+        kubectl set image deployment/$DEPLOYMENT_NAME nginx=${{ steps.login-ecr.outputs.registry }}/$ECR_REPOSITORY:$IMAGE_TAG --record -n $KUBE_NAMESPACE
+        kubectl rollout status deployment/$DEPLOYMENT_NAME -n $KUBE_NAMESPACE
+        
+    - name: Rollback To Previous Deployment, if rollout status got failed
+      if: failure()
+      run: kubectl rollout undo deployment/$DEPLOYMENT_NAME
+      
+    - name: Send mail to team members
+      if: always()
+      uses: dawidd6/action-send-mail@v2
+      with:
+        # mail server settings
+        server_address: smtp.gmail.com
+        server_port: 465
+        # user credentials
+        username: ${{ secrets.EMAIL_USERNAME }}
+        password: ${{ secrets.EMAIL_PASSWORD }}
+        # email subject
+        subject: ChainCode Stagging obortech-admin ${{ github.job }} job has ${{ job.status }} for ${{ github.repository }} 
+        # email body as text
+        body: |
+          ${{ github.job }} job in worflow ${{ github.workflow }} of repository ${{ github.repository }} has ${{ job.status }} 
+          
+          with commit id  ${{ github.sha }}  on branch ${{ github.ref }}
+            
+          To View workflow click ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            
+        # comma-separated string, send email to
+        to: sudhirsingh@mycloudbuilders.com, mahimasahu@mycloudbuilders.com, pavanikrishna@mycloudbuilders.com, alok.gupta@chaincodeconsulting.com, gary@chaincodeconsulting.com
+        # from email name
+        from: chaincodedev/obortech-admin

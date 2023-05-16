@@ -1,0 +1,628 @@
+.form-container {
+    display: block !important;
+    width: 100%;
+}
+
+.padding15 {
+    padding: 15px 0px;
+}
+
+/*form builder css*/
+body .ot-form-builder-wrapper .react-form-builder {
+    display: flex;
+}
+/* Responsive styles */
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) and (max-width: 1400.98px) {
+    body .ot-form-builder-wrapper .react-form-builder .col-md-9.react-form-builder-preview {
+        min-height: 145vh;
+    }
+}
+
+/* // For 2k Monitors, (more than 1401 px) */
+@media (min-width: 1401px) and (max-width: 1599.98px) {
+    body .ot-form-builder-wrapper .react-form-builder .col-md-9.react-form-builder-preview {
+        min-height: 140vh;
+    }
+}
+
+@media (min-width: 1600px) and (max-width: 1799.98px) {
+    body .ot-form-builder-wrapper .react-form-builder .col-md-9.react-form-builder-preview {
+        min-height: 137vh;
+    }
+}
+
+@media (min-width: 1800px) and (max-width: 1999.98px) {
+    body .ot-form-builder-wrapper .react-form-builder .col-md-9.react-form-builder-preview {
+        min-height: 135vh;
+    }
+}
+
+@media (min-width: 2000px) and (max-width: 2560.98px) {
+    body .ot-form-builder-wrapper .react-form-builder .col-md-9.react-form-builder-preview {
+        min-height: 132vh;
+    }
+}
+
+body .ot-form-builder-wrapper .react-form-builder .col-md-9.react-form-builder-preview {
+    border: 18px solid #f1f3f5;
+    background: #ffffff;
+    padding: 60px 50px 60px 20px;
+    box-shadow: none;
+    width: 100%;
+    height: 100%;
+}
+
+body .ot-form-builder-wrapper .modal {
+    background-color: #00000085;
+}
+
+.ot-form-builder-title h4 {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+body .ot-form-builder-wrapper .react-form-builder .col-md-9.react-form-builder-preview .Sortable .SortableItem.rfb-item {
+    background: #fff;
+    margin: 15px 15px;
+    box-shadow: 0px 4px 24px rgb(52 58 64 / 12%);
+    padding: 3px 19px 20px 19px;
+    border-radius: 8px;
+}
+
+body .ot-form-builder-wrapper .react-form-builder .col-md-9.react-form-builder-preview .Sortable .SortableItem.rfb-item:hover {
+    border-left: 8px solid #ec1d25;
+}
+
+body .ot-form-builder-wrapper .react-form-builder .col-md-9.react-form-builder-preview .Sortable .SortableItem.rfb-item .toolbar-header {
+    background: #fff;
+    box-shadow: none;
+    margin: 4px 0 14px 0;
+    padding: 0;
+    position: relative;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+/*
+body .ot-form-builder-wrapper .react-form-builder .col-md-9.react-form-builder-preview .Sortable .rfb-item:hover {
+    box-shadow: none;
+} */
+
+body .ot-form-builder-wrapper .react-form-builder .col-md-3.react-form-builder-toolbar .fixed-toolbar {
+    background-color: #dee2e6;
+    padding: 10px 10px;
+    box-shadow: 12.5653px 1.04711px 37.696px rgb(52 58 64 / 8%);
+    margin-top: 0;
+    position: absolute;
+
+    /* height: 100%; */
+}
+
+body .ot-form-builder-wrapper .react-form-builder .col-md-9.react-form-builder-preview .Sortable .rfb-item .toolbar-header {
+    border-bottom: 1px solid #0000001f;
+    padding: 5px 13px;
+}
+
+body .ot-form-builder-wrapper .react-form-builder .col-md-9.react-form-builder-preview .Sortable .rfb-item .toolbar-header .toolbar-header-buttons {
+    position: absolute;
+    right: -64px;
+    top: 0;
+    margin-top: 0;
+}
+
+body .ot-form-builder-wrapper .react-form-builder .col-md-9.react-form-builder-preview .Sortable .rfb-item .toolbar-header .toolbar-header-buttons i {
+    font-size: 16px;
+    color: #fff;
+}
+
+body .ot-form-builder-wrapper .react-form-builder .col-md-9.react-form-builder-preview .Sortable .rfb-item .toolbar-header .badge.badge-secondary {
+    background: transparent;
+    color: #212529;
+    font-size: 20px;
+    letter-spacing: 0.5px;
+    vertical-align: middle;
+    padding: 15px 0 6px 0;
+    white-space: normal !important;
+}
+
+body .ot-form-builder-wrapper .react-form-builder .col-md-9.react-form-builder-preview .Sortable .rfb-item .toolbar-header .toolbar-header-buttons .btn.is-isolated {
+    padding: 5px 7px;
+    display: block;
+    background: #ec1d25;
+    border-radius: 35px;
+    margin: 4px 0;
+}
+
+body .ot-form-builder-wrapper .react-form-builder .col-md-9.react-form-builder-preview .Sortable .rfb-item:not(hover) .toolbar-header {
+    opacity: 1;
+}
+
+body .ot-form-builder-wrapper .react-form-builder .col-md-9.react-form-builder-preview .Sortable .rfb-item:not(hover) .toolbar-header span {
+    opacity: 1;
+}
+
+body .ot-form-builder-wrapper .react-form-builder .col-md-9.react-form-builder-preview .Sortable .rfb-item:hover .toolbar-header .toolbar-header-buttons {
+    display: block;
+}
+
+body .ot-form-builder-wrapper .react-form-builder .col-md-3.react-form-builder-toolbar ul {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 0 !important;
+}
+
+body .ot-form-builder-wrapper .react-form-builder .col-md-3.react-form-builder-toolbar h4 {
+    font-size: 17px;
+    text-align: left;
+    padding: 11px 0 0 0;
+    color: #000;
+}
+
+body .ot-form-builder-wrapper .react-form-builder .col-md-3.react-form-builder-toolbar ul li {
+    cursor: pointer;
+    list-style: none;
+    margin: 5px;
+    font-size: 14px;
+    padding: 5px 4px;
+    width: 30.9%;
+    height: 9.4vh;
+    border: none;
+    color: #343a40;
+    flex-grow: 1;
+    text-align: center;
+    background: #f1f3f5;
+    border-radius: 0px;
+}
+
+body .ot-form-builder-wrapper .react-form-builder .col-md-3.react-form-builder-toolbar {
+    overflow-y: clip;
+}
+
+body .ot-form-builder-wrapper .react-form-builder .col-md-3.react-form-builder-toolbar ul li:hover {
+    background: #ced4da;
+}
+
+body .ot-form-builder-wrapper .react-form-builder .col-md-3.react-form-builder-toolbar ul li i {
+    display: block;
+    margin: 6px 0px 9px 0px;
+    font-size: 19px;
+    color: #343a40;
+}
+
+body .ot-form-builder-wrapper .react-form-builder .col-md-3.react-form-builder-toolbar ul li img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 9px;
+    margin-top: 9px;
+    display: block;
+    font-size: 19px;
+    color: #343a40;
+}
+
+.ot-btn-form-build-absolute button.default-css {
+    padding: 0 1px 0px 8px;
+    color: rgb(8, 106, 216);
+}
+
+.ot-btn-form-build-absolute button.default-css:focus {
+    box-shadow: none;
+}
+
+.ot-btn-form-build-absolute {
+    position: absolute;
+    top: 38px;
+    z-index: 1;
+    right: 28%;
+    margin: 3px auto;
+}
+
+.ot-btn-form-build-absolute i {
+    color: #c8ced4;
+}
+
+.col-md-9.react-form-builder-preview .form-place-holder {
+    margin: 10px;
+    border: 1px solid #bbbbbb91;
+}
+
+.form-container.ot-form-builder-wrapper .col-md-9.react-form-builder-preview .edit-form {
+    background: #f2f5f8;
+    box-shadow: 7px 0px 24px 6px #0000001f;
+    border-right: none;
+}
+
+.form-container.ot-form-builder-wrapper .col-md-9.react-form-builder-preview .edit-form h4 {
+    color: #000;
+}
+
+.form-container.ot-form-builder-wrapper .col-md-9.react-form-builder-preview .edit-form .rdw-editor-wrapper .rdw-editor-toolbar {
+    padding: 12px 5px 0;
+}
+
+.form-container.ot-form-builder-wrapper .col-md-9.react-form-builder-preview .edit-form .rdw-editor-wrapper .rdw-editor-main::-webkit-scrollbar,
+.form-container.ot-form-builder-wrapper .col-md-9.react-form-builder-preview .edit-form::-webkit-scrollbar {
+    width: 6px;
+}
+
+.form-container.ot-form-builder-wrapper .col-md-9.react-form-builder-preview .edit-form .custom-control-label {
+    vertical-align: middle;
+    font-size: 15px;
+    color: #000;
+}
+
+.form-container.ot-form-builder-wrapper .col-md-9.react-form-builder-preview .edit-form .custom-checkbox .custom-control-label::before {
+    border-radius: 3px;
+}
+
+.ot-form-builder-wrapper .has-clicked {
+    border-left: 8px solid #ec1d25;
+}
+
+.toolbar-header-buttons {
+    margin-top: -10px !important;
+}
+
+.react-form-builder .react-form-builder-preview .Sortable .rfb-item .toolbar-header .toolbar-header-buttons {
+    right: -25px;
+    margin-top: -55px;
+}
+
+.is-isolated {
+    font-size: 11px !important;
+}
+
+.formcontentShow .validation-error {
+    position: unset;
+}
+
+.formcontentShow .validation-error > div:first-child {
+    float: left;
+}
+
+.btn-toolbar {
+    justify-content: center !important;
+}
+
+.react-form-builder-preview .SortableItem .col-md-3 div {
+    min-width: unset !important;
+}
+
+.fixed-toolbar.sticky {
+    position: fixed;
+    top: 66px;
+    width: 300px;
+    /* height: 809px !important; */
+}
+
+.fixed-toolbar {
+    /* height: 952px !important; */
+    width: 300px;
+}
+
+.form-builder-tools .dropdown {
+    position: absolute;
+    margin: 35px 0 0 50px;
+    z-index: 9;
+}
+
+.form-builder-tools .dropdown button:focus,
+.form-builder-tools .dropdown button:active {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.form-builder-tools .dropdown-menu {
+    max-height: 450px;
+    overflow: scroll;
+    background: #fff;
+}
+
+.form-builder-tools .dropdown button.dropdown-toggle,
+.form-builder-tools .dropdown button.dropdown-toggle:active,
+.form-builder-tools .dropdown button.dropdown-toggle:focus,
+.form-builder-tools .dropdown button.dropdown-toggle:target,
+.form-builder-tools .dropdown button.dropdown-toggle:hover {
+    background-color: #f1f3f5 !important;
+    border-color: #f1f3f5 !important;
+    outline: none !important;
+    color: #343a40 !important;
+}
+
+*:focus {
+    outline: none !important;
+}
+
+.custom-modal-header h5 {
+    width: 100%;
+    text-align: right;
+}
+
+.signature-modal.custom-modal-header.tab {
+    color: #47b1a4 !important;
+}
+
+.signature-modal.custom-modal-header.active {
+    background-color: #47b1a4 !important;
+    color: #fff !important;
+}
+
+.signature-modal .btn-primary {
+    background-color: #47b1a4 !important;
+    color: #fff !important;
+}
+
+.signature-modal.btn-secondary {
+    background-color: #fff !important;
+    color: #47b1a4 !important;
+}
+
+.mydiv {
+    position: absolute;
+    z-index: 10;
+    background-color: #f1f1f1;
+    border: 1px solid #d3d3d3;
+    text-align: center;
+    top: 70px;
+    left: 55%;
+}
+
+.mydiv img {
+    height: 100px !important;
+}
+
+.mydivheader {
+    padding: 10px;
+    cursor: move;
+    z-index: 9999999999999999999999999;
+    background-color: #2196f3;
+    color: #fff;
+}
+
+.float-btn {
+    position: absolute;
+    padding: 0px 12px;
+    right: -50px;
+    top: -28px;
+    color: #ffffff !important;
+    background: #47b0a2;
+    border-radius: 6px;
+}
+
+.drag-btn {
+    position: absolute;
+    padding: 0px 12px;
+    left: -23px;
+    top: -28px;
+    border-radius: 6px;
+}
+
+.signature-img {
+    width: 250px !important;
+    height: 60px !important;
+}
+
+.custom-delete-filter-modal .btn-close {
+    box-sizing: content-box;
+    width: 1em;
+    height: 1em;
+    padding: 0.25em 0.25em;
+    color: #000;
+    background: transparent
+        url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e")
+        center/1em auto no-repeat;
+    border: 0;
+    border-radius: 0.25rem;
+    opacity: 0.5;
+}
+
+.edit-filter-pdf-modal-content {
+    max-height: 900px !important;
+}
+
+.edit-filter-pdf-modal-content .pdf-page-container {
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #555 !important;
+}
+
+.edit-filter-pdf-modal-content .pdf-page-view {
+    display: flex;
+    width: 60vh;
+    justify-content: center;
+}
+
+.edit-filter-pdf-modal-content .pdf-page-view .image-wrapper {
+    max-width: 500px;
+    max-height: 600px;
+}
+
+.edit-filter-pdf-modal-content .pdf-page-view .image-wrapper img {
+    object-fit: contain;
+    object-position: center;
+    height: 100%;
+    width: 100%;
+}
+
+.mydiv a,
+.mydiv .mydivheader {
+    background-color: #000 !important;
+    color: #fff;
+}
+
+.mydiv .mydivheader i {
+    color: #fff;
+}
+
+#editPdfModal .modal-footer {
+    justify-content: center !important;
+}
+
+.custom-delete-filter-modal .modal-header {
+    display: flex !important;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 1rem 1rem;
+    border-bottom: 1px solid #e3e6f0;
+    border-top-left-radius: calc(0.3rem - 1px);
+    border-top-right-radius: calc(0.3rem - 1px);
+}
+
+.asset-container {
+    box-sizing: border-box;
+    margin: 20px 0 40px 0;
+}
+.asset-container .labels-container {
+    width: 100% !important;
+    margin: 10px 0;
+}
+.asset-container .labels-container .labels-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    padding-left: 3%;
+}
+.asset-container .labels-container .labels-wrapper label {
+    text-align: left;
+    color: gray;
+    display: inline-block;
+    width: 100% !important;
+}
+.asset-container .asset-items-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+.asset-container .item-number {
+    flex: 0 1 3%;
+    color: #000;
+    font-weight: 500;
+}
+.asset-container .options-container {
+    flex: 0 1 97%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+}
+.asset-container .options-container .input-container {
+    height: 35px;
+    border: 1px solid #666;
+}
+.asset-container .options-container .input-box {
+    border: none;
+    outline: none;
+    display: inline-block;
+    height: 100% !important;
+    width: 100% !important;
+    padding: 4px 0;
+    background-color: transparent;
+    font-size: 14px;
+}
+.asset-container .options-container .input-box:focus {
+    outline: none;
+    border: none;
+}
+.asset-container .options-container .dropdown {
+    border: none;
+    border-bottom: 1px solid #666;
+    background: linear-gradient(to right, #ccc, #ccc);
+    background-position: calc(100% - 1.5em) 0.5em;
+    background-size: 1px 1.5em;
+    background-repeat: no-repeat;
+}
+.asset-container .options-container .number-input {
+    border-radius: 4px;
+}
+
+.asset-container .options-container .number-input input {
+    padding: 4px;
+}
+
+.asset-container .button-container {
+    width: 100%;
+    display: grid;
+    place-items: center;
+    place-content: center;
+}
+.asset-container .button-container button {
+    padding: 8px;
+    background: transparent;
+    border: 1px solid #dddddd;
+    outline: none;
+}
+.asset-container .button-container button:focus {
+    border: 1px solid #dddddd;
+}
+.asset-container .button-container button i {
+    color: #dddddd;
+}
+
+.react-datepicker-popper {
+    z-index: 9999 !important;
+}
+
+.rating-container,
+.react-star-rating__root {
+    vertical-align: middle;
+    display: inline-block;
+}
+.rating-container .rating-stars:before,
+.rating-container:before {
+    content: attr(data-content);
+}
+.react-star-rating__star {
+    width: 25px;
+}
+.react-star-rating__star #star-flat {
+    fill: #c6c6c6;
+}
+.react-star-rating__star #star-flat:hover {
+    fill: #ffa91b;
+}
+.react-star-rating__root {
+    font-size: 2em;
+}
+.react-star-rating__root.rating-editing:hover {
+    cursor: pointer;
+}
+.rating-container {
+    position: relative;
+    color: #e3e3e3;
+    overflow: hidden;
+}
+.rating-container .rating-stars {
+    position: absolute;
+    left: 0;
+    top: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #f5a71b;
+    -webkit-transition: all 0.01s;
+    -moz-transition: all 0.01s;
+    transition: all 0.01s;
+    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(#fdbd47), to(#f5a71b));
+}
+.react-rating-caption {
+    font-size: 1.25em;
+    vertical-align: middle;
+    margin-right: 0.5em;
+}
+.rating-disabled .rating-container:hover {
+    cursor: not-allowed;
+}
+.react-star-rating__size--sm {
+    font-size: 1em;
+}
+.react-star-rating__size--md {
+    font-size: 2em;
+}
+.react-star-rating__size--lg {
+    font-size: 2.5em;
+}

@@ -1,0 +1,81 @@
+# This is deployment file that will be used to deploy this app on k8s
+# Please change deployment name and other matching labels before deploying
+
+# prettier-ignore
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: obortech-admin-staging
+  namespace: hyperledger
+  labels:
+    app: obortech-admin-staging
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: obortech-admin-staging
+  template:
+    metadata:
+      labels:
+        app: obortech-admin-staging
+    spec:
+      containers:
+      - name: obortech-admin-staging
+        image: 501207586493.dkr.ecr.ap-southeast-1.amazonaws.com/obortech-admin-staging:9c77533e62e319289666ccee32b3c0a66fd40f64
+        resources:
+          limits:
+            memory: "2Gi"
+            cpu: "1"
+        ports:
+        - containerPort: 3000
+        volumeMounts:
+        - mountPath: /app/server/upload
+          name: ob-upload
+        - mountPath: /app/.env
+          name: env-file
+          subPath: env
+      volumes:
+      - name: ob-upload
+        persistentVolumeClaim:
+          claimName: ob-upload-pvc
+      - configMap:
+          defaultMode: 420
+          name: obortech-admin-staging-env
+        name: env-file
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: obortech-admin-staging
+    namespace: hyperledger
+    labels:
+        app: obortech-admin-staging
+spec:
+    type: ClusterIP
+    selector:
+        app: obortech-admin-staging
+    ports:
+        - port: 3000
+          protocol: TCP
+          targetPort: 3000
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+    name: obortech-admin-staging
+    namespace: hyperledger
+spec:
+    ingressClassName: nginx
+    rules:
+        - host: st-login.obortech.io
+          http:
+              paths:
+                  - backend:
+                        service:
+                            name: obortech-admin-staging
+                            port:
+                                number: 3000
+                    path: /
+                    pathType: ImplementationSpecific

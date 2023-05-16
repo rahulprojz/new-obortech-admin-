@@ -1,0 +1,271 @@
+diff --git a/node_modules/react-form-builder2/lib/form-elements-edit.js b/node_modules/react-form-builder2/lib/form-elements-edit.js
+index d729a05..288f8ab 100644
+--- a/node_modules/react-form-builder2/lib/form-elements-edit.js
++++ b/node_modules/react-form-builder2/lib/form-elements-edit.js
+@@ -276,7 +276,8 @@ var FormElementsEdit = /*#__PURE__*/function (_React$Component) {
+       }, /*#__PURE__*/_react["default"].createElement("label", {
+         className: "control-label",
+         htmlFor: "elementWidth"
+-      }, "Width:"), /*#__PURE__*/_react["default"].createElement("input", {
++      }, "Width:"), 
++      /*#__PURE__*/_react["default"].createElement("input", {
+         id: "elementWidth",
+         type: "text",
+         className: "form-control",
+@@ -317,7 +318,48 @@ var FormElementsEdit = /*#__PURE__*/function (_React$Component) {
+         htmlFor: "is-required"
+       }, "Required")), this.props.element.hasOwnProperty('readOnly') && /*#__PURE__*/_react["default"].createElement("div", {
+         className: "custom-control custom-checkbox"
+-      }, /*#__PURE__*/_react["default"].createElement("input", {
++      },
++      /*#__PURE__*/_react["default"].createElement("input", {
++        id: "is-string",
++        className: "custom-control-input",
++        type: "checkbox",
++        checked: this_checked,
++        value: true,
++        onChange: this.editElementProp.bind(this, 'required', 'checked')
++      }),
++      /*#__PURE__*/_react["default"].createElement("label", {
++        className: "custom-control-label",
++        htmlFor: "is-string"
++      }, "Required")), this.props.element.hasOwnProperty('readOnly') && /*#__PURE__*/_react["default"].createElement("div", {
++        className: "custom-control custom-checkbox"
++      },
++      /*#__PURE__*/_react["default"].createElement("label", {
++        className: "control-label",
++        htmlFor: "input_min"
++      }, "Min"), 
++      
++      /*#__PURE__*/_react["default"].createElement("input", {
++        id: "input_min",
++        type: "number",
++        className: "form-control",
++        defaultValue: this.props.element.input_min,
++        onBlur: this.updateElement.bind(this),
++        onChange: this.editElementProp.bind(this, 'input_min', 'value')
++      }),
++      /*#__PURE__*/_react["default"].createElement("label", {
++      className: "control-label",
++        htmlFor: "input_max"
++      }, "Min"), 
++
++      /*#__PURE__*/_react["default"].createElement("input", {
++        id: "input_max",
++        type: "number",
++        className: "form-control",
++        defaultValue: this.props.element.input_max,
++        onBlur: this.updateElement.bind(this),
++        onChange: this.editElementProp.bind(this, 'input_max', 'value')
++      }),
++      /*#__PURE__*/_react["default"].createElement("input", {
+         id: "is-read-only",
+         className: "custom-control-input",
+         type: "checkbox",
+@@ -439,10 +481,16 @@ var FormElementsEdit = /*#__PURE__*/function (_React$Component) {
+         className: "form-group"
+       }, /*#__PURE__*/_react["default"].createElement("div", {
+         className: "form-group-range"
+-      }, /*#__PURE__*/_react["default"].createElement("label", {
++      }, 
++      
++      /*#__PURE__*/
++      
++      _react["default"].createElement("label", {
+         className: "control-label",
+         htmlFor: "rangeMin"
+-      }, "Min"), /*#__PURE__*/_react["default"].createElement("input", {
++      }, "Min"), 
++      
++      /*#__PURE__*/_react["default"].createElement("input", {
+         id: "rangeMin",
+         type: "number",
+         className: "form-control",
+diff --git a/node_modules/react-form-builder2/lib/form-elements/custom-element.js b/node_modules/react-form-builder2/lib/form-elements/custom-element.js
+index 7f67af0..86f84ed 100644
+--- a/node_modules/react-form-builder2/lib/form-elements/custom-element.js
++++ b/node_modules/react-form-builder2/lib/form-elements/custom-element.js
+@@ -86,9 +86,9 @@ var CustomElement = /*#__PURE__*/function (_Component) {
+         className: "form-group"
+       }, /*#__PURE__*/_react["default"].createElement(_componentLabel["default"], _extends({
+         className: "form-label"
+-      }, this.props)), /*#__PURE__*/_react["default"].createElement(Element, _extends({
++      }, this.props)),/*#__PURE__*/_react["default"].createElement("div", {}, /*#__PURE__*/_react["default"].createElement(Element, _extends({
+         data: this.props.data
+-      }, this.props.data.props, props))));
++      }, this.props.data.props, props)))));
+     }
+   }]);
+ 
+diff --git a/node_modules/react-form-builder2/lib/form-elements/header-bar.js b/node_modules/react-form-builder2/lib/form-elements/header-bar.js
+index b807eb3..558e694 100644
+--- a/node_modules/react-form-builder2/lib/form-elements/header-bar.js
++++ b/node_modules/react-form-builder2/lib/form-elements/header-bar.js
+@@ -63,12 +63,7 @@ var HeaderBar = /*#__PURE__*/function (_React$Component) {
+         onClick: this.props.onDestroy.bind(this, this.props.data)
+       }, /*#__PURE__*/_react["default"].createElement("i", {
+         className: "is-isolated fas fa-trash"
+-      })), !this.props.data.isContainer && /*#__PURE__*/_react["default"].createElement(_grip["default"], {
+-        data: this.props.data,
+-        index: this.props.index,
+-        onDestroy: this.props.onDestroy,
+-        setAsChild: this.props.setAsChild
+-      })));
++      }))));
+     }
+   }]);
+ 
+diff --git a/node_modules/react-form-builder2/lib/form-elements/index.js b/node_modules/react-form-builder2/lib/form-elements/index.js
+index 7134eb7..ddc0a1f 100644
+--- a/node_modules/react-form-builder2/lib/form-elements/index.js
++++ b/node_modules/react-form-builder2/lib/form-elements/index.js
+@@ -404,13 +404,13 @@ var Dropdown = /*#__PURE__*/function (_React$Component8) {
+         className: baseClasses
+       }, /*#__PURE__*/_react["default"].createElement(_componentHeader["default"], this.props), /*#__PURE__*/_react["default"].createElement("div", {
+         className: "form-group"
+-      }, /*#__PURE__*/_react["default"].createElement(_componentLabel["default"], this.props), /*#__PURE__*/_react["default"].createElement("select", props, this.props.data.options.map(function (option) {
++      }, /*#__PURE__*/_react["default"].createElement(_componentLabel["default"], this.props), /*#__PURE__*/_react["default"].createElement("div", {},/*#__PURE__*/_react["default"].createElement("select", props, this.props.data.options.map(function (option) {
+         var this_key = "preview_".concat(option.key);
+         return /*#__PURE__*/_react["default"].createElement("option", {
+           value: option.value,
+           key: this_key
+         }, option.text);
+-      }))));
++      })))));
+     }
+   }]);
+ 
+@@ -626,7 +626,7 @@ var Checkboxes = /*#__PURE__*/function (_React$Component11) {
+         className: "form-group"
+       }, /*#__PURE__*/_react["default"].createElement(_componentLabel["default"], _extends({
+         className: "form-label"
+-      }, this.props)), this.props.data.options.map(function (option) {
++      }, this.props)), /*#__PURE__*/_react["default"].createElement("div", {},this.props.data.options.map(function (option) {
+         var this_key = "preview_".concat(option.key);
+         var props = {};
+         props.name = "option_".concat(option.key);
+@@ -656,7 +656,7 @@ var Checkboxes = /*#__PURE__*/function (_React$Component11) {
+           className: "custom-control-label",
+           htmlFor: "fid_" + this_key
+         }, option.text));
+-      })));
++      }))));
+     }
+   }]);
+ 
+@@ -702,7 +702,7 @@ var RadioButtons = /*#__PURE__*/function (_React$Component12) {
+         className: "form-group"
+       }, /*#__PURE__*/_react["default"].createElement(_componentLabel["default"], _extends({
+         className: "form-label"
+-      }, this.props)), this.props.data.options.map(function (option) {
++      }, this.props)),/*#__PURE__*/_react["default"].createElement("div", {}, this.props.data.options.map(function (option) {
+         var this_key = "preview_".concat(option.key);
+         var props = {};
+         props.name = self.props.data.field_name;
+@@ -732,7 +732,7 @@ var RadioButtons = /*#__PURE__*/function (_React$Component12) {
+           className: "custom-control-label",
+           htmlFor: "fid_" + this_key
+         }, option.text));
+-      })));
++      }))));
+     }
+   }]);
+ 
+diff --git a/node_modules/react-form-builder2/lib/form.js b/node_modules/react-form-builder2/lib/form.js
+index 018904a..e1da87a 100644
+--- a/node_modules/react-form-builder2/lib/form.js
++++ b/node_modules/react-form-builder2/lib/form.js
+@@ -446,22 +446,22 @@ var ReactForm = /*#__PURE__*/function (_React$Component) {
+           case 'Rating':
+           case 'Tags':
+           case 'Range':
+-            return _this8.getInputElement(item);
++            return /*#__PURE__*/_react["default"].createElement("div", {},_this8.getInputElement(item));
+ 
+           case 'CustomElement':
+-            return _this8.getCustomElement(item);
++            return /*#__PURE__*/_react["default"].createElement("div", {},_this8.getCustomElement(item));
+ 
+           case 'FourColumnRow':
+-            return _this8.getContainerElement(item, _multiColumn.FourColumnRow);
++            return /*#__PURE__*/_react["default"].createElement("div", {},_this8.getContainerElement(item, _multiColumn.FourColumnRow));
+ 
+           case 'ThreeColumnRow':
+-            return _this8.getContainerElement(item, _multiColumn.ThreeColumnRow);
++            return /*#__PURE__*/_react["default"].createElement("div", {},_this8.getContainerElement(item, _multiColumn.ThreeColumnRow));
+ 
+           case 'TwoColumnRow':
+-            return _this8.getContainerElement(item, _multiColumn.TwoColumnRow);
++            return /*#__PURE__*/_react["default"].createElement("div", {},_this8.getContainerElement(item, _multiColumn.TwoColumnRow));
+ 
+           case 'Signature':
+-            return /*#__PURE__*/_react["default"].createElement(Signature, {
++            return /*#__PURE__*/_react["default"].createElement("div", {},/*#__PURE__*/_react["default"].createElement(Signature, {
+               ref: function ref(c) {
+                 return _this8.inputs[item.field_name] = c;
+               },
+@@ -470,10 +470,10 @@ var ReactForm = /*#__PURE__*/function (_React$Component) {
+               key: "form_".concat(item.id),
+               data: item,
+               defaultValue: _this8._getDefaultValue(item)
+-            });
++            }));
+ 
+           case 'Checkboxes':
+-            return /*#__PURE__*/_react["default"].createElement(Checkboxes, {
++            return /*#__PURE__*/_react["default"].createElement("div", {},/*#__PURE__*/_react["default"].createElement(Checkboxes, {
+               ref: function ref(c) {
+                 return _this8.inputs[item.field_name] = c;
+               },
+@@ -483,7 +483,7 @@ var ReactForm = /*#__PURE__*/function (_React$Component) {
+               key: "form_".concat(item.id),
+               data: item,
+               defaultValue: _this8._optionsDefaultValue(item)
+-            });
++            }));
+ 
+           case 'Image':
+             return /*#__PURE__*/_react["default"].createElement(Image, {
+@@ -498,12 +498,12 @@ var ReactForm = /*#__PURE__*/function (_React$Component) {
+             });
+ 
+           case 'Download':
+-            return /*#__PURE__*/_react["default"].createElement(Download, {
++            return /*#__PURE__*/_react["default"].createElement("div", {},/*#__PURE__*/_react["default"].createElement(Download, {
+               download_path: _this8.props.download_path,
+               mutable: true,
+               key: "form_".concat(item.id),
+               data: item
+-            });
++            }));
+ 
+           case 'Camera':
+             return /*#__PURE__*/_react["default"].createElement(Camera, {
+@@ -518,7 +518,7 @@ var ReactForm = /*#__PURE__*/function (_React$Component) {
+             });
+ 
+           default:
+-            return _this8.getSimpleElement(item);
++            return /*#__PURE__*/_react["default"].createElement("div", {},_this8.getSimpleElement(item));
+         }
+       });
+       var formTokenStyle = {
+@@ -552,7 +552,8 @@ var ReactForm = /*#__PURE__*/function (_React$Component) {
+         name: "task_id",
+         type: "hidden",
+         value: this.props.task_id
+-      })), items, /*#__PURE__*/_react["default"].createElement("div", {
++      })), /*#__PURE__*/_react["default"].createElement("div", {
++      },items, /*#__PURE__*/_react["default"].createElement("div", {
+         className: "btn-toolbar"
+       }, !this.props.hide_actions && /*#__PURE__*/_react["default"].createElement("input", {
+         type: "submit",
+@@ -561,7 +562,7 @@ var ReactForm = /*#__PURE__*/function (_React$Component) {
+       }), !this.props.hide_actions && this.props.back_action && /*#__PURE__*/_react["default"].createElement("a", {
+         href: this.props.back_action,
+         className: "btn btn-default btn-cancel btn-big"
+-      }, backName)))));
++      }, backName))))));
+     }
+   }]);
+ 

@@ -1,0 +1,91 @@
+
+.customAccordion .nav-item{margin: 0 10px;
+    background: rgba(255,255,255,.05);
+    margin-bottom: 2px;
+    box-sizing: border-box;}
+  
+  .customAccordion .nav-item .col-sm-10{padding-left: 0;}
+  .customAccordion .nav-item .col-sm-10 .nav-link{padding: .5rem 1.5rem;}
+  .customAccordion .nav-item .nav-link[data-toggle="collapse"]::after{position: absolute; left: 8px;}
+  .customAccordion.sidebar .nav-item .dropdown-menu{position: absolute !important;
+    left: -87px !important;
+    min-width: 130px !important;
+    top: 40px;
+    border: 0;
+    box-shadow: 0 10px 20px rgb(0 0 0 / 31%);
+    z-index: 99;}
+  .customAccordion.sidebar .nav-item .dropdown-menu li {
+    cursor: pointer;
+    line-height: 28px;
+    color: #666;
+  }
+  .customAccordion.sidebar .nav-item .dropdown-menu li:hover {
+    color: #000;
+  }
+  
+  .customAccordion .nav-item > .collapse, .customAccordion .nav-item > .collapsing {
+    margin: 0 .2rem 0 1.5rem;
+}
+  .customAccordion.sidebar .nav-item .collapse-inner{margin: 0;}
+  .customAccordion.sidebar .nav-item .dropdown-menu:before {
+    content: '';
+    position: absolute;
+    top: -7px;
+    height: 15px;
+    width: 15px;
+    background: #fff;
+    right: 16px;
+    transform: rotate(45deg);
+  }
+  
+  
+  .customAccordion .nav-item .col-sm-2 a{ line-height: 30px; }
+  .customAccordion .nav-item input[type="text"]{border:0; max-width: 100%;}
+  
+  .customAccordion .nav-item > .collapse, .customAccordion .nav-item > .collapsing{
+    width: 100%;
+  }
+  
+  .customAccordion .nav-item > .collapse .collapse-inner > .collapse, .customAccordion .nav-item > .collapse .collapse-inner > .collapsing{
+    width: 100%;
+    margin: 0 .2rem 0 1.5rem;
+  }
+  
+  .customAccordion .nav-item > .collapsing .collapse-inner > .collapse, .customAccordion .nav-item > .collapsing .collapse-inner > .collapsing{
+    width: 100%;
+    margin: 0 .2rem 0 1.5rem;
+  }
+  
+  .customAccordion .nav-item > .collapse, .customAccordion .nav-item > .collapsing{
+    margin: 0 .2rem 0 1.5rem;
+  }
+  
+  .customAccordion .nav-item > .collapse .collapse-inner{
+    padding-bottom: 10px;
+  }
+  
+  .customAccordion .nav-item a.collapse-item a{color: #fff; font-size: 0.85rem;}
+  .customAccordion .nav-item a{color: #fff; font-size: 0.85rem;}
+  .customAccordion .nav-item a.collapse-item a:hover{color: #fff; text-decoration: none; font-size: 0.85rem;}
+  .customAccordion .nav-item a:hover{color: #fff; text-decoration: none; font-size: 0.85rem;}
+
+  .accordion > .card {
+    overflow: hidden;
+  }
+  
+  .accordion > .card:not(:last-of-type) {
+    border-bottom: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  
+  .accordion > .card:not(:first-of-type) {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+  
+  .accordion > .card > .card-header {
+    border-radius: 0;
+    margin-bottom: -1px;
+  }
+  

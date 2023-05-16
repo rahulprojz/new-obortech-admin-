@@ -1,0 +1,12 @@
+textarea.form-control {
+    min-height: calc(1.5em + .75rem + 2px);
+}
+textarea.form-control-sm {
+    min-height: calc(1.5em + .5rem + 2px);
+}
+textarea.form-control-lg {
+    min-height: calc(1.5em + 1rem + 2px);
+}
+textarea.form-control {
+    height: auto;
+  }

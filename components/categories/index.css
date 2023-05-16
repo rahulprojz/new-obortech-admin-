@@ -1,0 +1,15 @@
+.not-allowed td {
+    color: #ccc !important;
+    cursor: not-allowed !important;
+}
+
+tbody tr.not-allowed td {
+    color: #ccc !important;
+    cursor: not-allowed !important;
+}
+
+.not-allowed .fa,
+.not-allowed .fas {
+    color: #ccc !important;
+    cursor: not-allowed !important;
+}

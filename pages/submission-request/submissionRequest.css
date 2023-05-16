@@ -1,0 +1,147 @@
+.request-body{
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+.request-body-wrap{
+    padding:0px;
+}
+.requet-select{
+    max-width: 317px;
+    width:100%;
+    padding: 6px 60px 6px 13px;
+    font-size: 16px;
+    color:#000000;
+    background: #DCDCDC;
+    border:1px solid #ACACAC;
+    border-radius: 5px;
+}
+.request-btn.custom-checkbox .custom-control-label::before{
+    border-color: #737373;
+    background-color: #737373;
+    left:auto;
+    right:0;
+    width: 21px;
+    height: 21px;
+    top: 0px;
+    border-radius: 50%;
+}
+.request-btn.custom-checkbox .custom-control-label::after{
+    left:auto;
+    right:0;
+    top: 22%;
+    right: 5px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+}
+.request-btn .custom-control-label{
+    display: block;
+}
+.request-btn.half-card .custom-control-input:checked ~ .custom-control-label::before{
+    border-color: #737373;
+    background-color: #737373;
+    width: 21px;
+    height: 21px;
+    top: 0px;
+}
+.request-btn.half-card .custom-control-input:checked ~ .custom-control-label::after{
+    background-image: none;
+    background: none;
+    border-color: #fff;
+    background-color: #fff;
+    border-radius: 50%;
+
+}
+.recipients-header .modal-sub-heading{
+    margin-bottom: 0px;
+}
+.recipients-btn{
+    border:none;
+    width: 82px;
+    padding:14px 0px;
+    background: #3E3E3E;
+    color:#fff;
+    font-size: 15px;
+    border-radius: 10px;
+    line-height: 0px;
+    position: relative;
+}
+.recipients-btn:focus{
+    border:none;
+    outline:none;
+}
+.right-arrow{
+    position: absolute;
+    right: 11%;
+    top: 31%;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 4px;
+    transform: rotate(-44deg);
+    -webkit-transform: rotate(-44deg);
+}
+.recipients-fliter-wrap{
+    background: #fff;
+    padding: 19px 16px;
+    border-radius: 5px;
+}
+.recipients-filter{
+    border:none;
+    padding-bottom: 10px;
+    width: 100%;
+}
+.recipients-filter:focus{
+    border:none;
+    outline:none;
+}
+.recipients-fliter-wrap .setting-content-wrap{
+    border:none;
+    border-top:1px solid #DCDCDC;
+    border-radius: 0;
+}
+.recipients-header{
+    margin-bottom: 12px;
+}
+.request-btn-wrap{
+    justify-content: center;
+}
+.send-btn{
+  width: 169px;
+  padding:20px 0px;
+  line-height: 0px;
+  font-size: 14px;
+  color:#fff;
+  border:none;
+  background: #000;
+  border-radius: 10px;
+  font-weight: 700;
+}
+.send-btn:focus{
+    border:none;
+}
+.request-body .half-card{
+    margin-bottom:20px;
+}
+.common-modal-btn{
+    background: transparent;
+    padding:0px;
+    border:none;
+}
+.common-modal-btn:focus{
+    border:none;
+}
+@media (min-width: 576px){
+    .request-body .half-card{
+        margin-bottom:0px;
+    }
+    .request-body{
+        margin-bottom: 64px;
+    }
+    .request-btn.custom-checkbox .custom-control-label::after{
+        right: 5px;
+    }
+}
+.submission-model {
+    background-color: #F1F0F0 !important;
+}

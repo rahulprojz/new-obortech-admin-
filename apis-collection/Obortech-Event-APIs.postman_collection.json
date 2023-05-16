@@ -1,0 +1,1196 @@
+{
+	"info": {
+		"_postman_id": "dc66f258-bfb0-413a-9c6a-e45b7fccc350",
+		"name": "Obortech-Event-APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24196275"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Profile password verification (3FA-Step 1)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userName\": \"dorjbayar\",\n  \"password\": \"Test@123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/auth/verify/password",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"verify",
+								"password"
+							]
+						},
+						"description": "This is the first step of the 3 factor authentication process. It verifies the profile password of the user. The temporary token received in the response is required to execute Step 2 of the 3 factor authentication.\n\n| **Key** | **Value** | **Description** | **Required** |\n| --- | --- | --- | --- |\n| username | \"obortech\" | Username of the user | true |\n| password | \"****\" | Profile password of the user | true |"
+					},
+					"response": []
+				},
+				{
+					"name": "Blockchain password verification (3FA-step2)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"transactionPassword\": \"PiaB5E3oKK\",\n  \"tempToken\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdOYW1lIjoiY2FzaG1lcmUiLCJkZXBhcnRtZW50IjoiYmxvY2tjaGFpbiIsInVzZXJOYW1lIjoiY2FzMDI1OSIsIm9yZyI6ImNhc2htZXJlIiwibmFtZSI6ImNhczAyNTkiLCJpYXQiOjE2NzM4NjIzOTIsImV4cCI6MTY3Mzg2MjY5MiwiYXVkIjoiaHR0cHM6Ly93d3cub2JvcnRlY2guaW8vIiwiaXNzIjoiT2JvcnRlY2ggQmxvY2tjaGFpbiIsInN1YiI6ImFkbWluQG9ib3J0ZWNoLmlvIn0.hkocyCfIzuwTNrPjIkIwLitB91gUjouHFpnPNpi1CCXr1NHra46R9OXz840z03KcXU6ObjXZSzwjZ_AxEfmDRw\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/auth/verify/transaction-password",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"verify",
+								"transaction-password"
+							]
+						},
+						"description": "In the second step, it is required to verifiy the blockchain password of the user. After successful verification, this endpoint will send an OTP to user's registered mobile number. Use the temporary token received in response to complete the Step 3 of the 3 factor authentication\n\n| **Key** | **Value** | **Description** | **Required** |\n| --- | --- | --- | --- |\n| transactionPassword | \"\\*\" | Blockchain password of the user | true |\n| tempToken | \"eyJhbGciOiJSUzI1NiIsInR5cC........jFoFA\" | temptoken token is obtained from profile password verification | true |"
+					},
+					"response": []
+				},
+				{
+					"name": "Generate access token (3FA-step3)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"otp\": \"141765\",\n  \"tempToken\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdOYW1lIjoiY2FzaG1lcmUiLCJkZXBhcnRtZW50IjoiYmxvY2tjaGFpbiIsInVzZXJOYW1lIjoiY2FzMDI1OSIsInBob25lIjoiNzQ2NzI4NTc2NyIsInRlbXBUb2tlbiI6IjRkNWQyNmExZDhmNDM1OWMyMWJmZWI3YjhjZmM2NmVhNjkwM2Y1MmVkYjMzNWM0MjUzYWRjMjAwYzM2MWZlN2EuMTY3Mzg2MzM5NTY3MyIsIm9yZyI6ImNhc2htZXJlIiwibmFtZSI6ImNhczAyNTkiLCJpYXQiOjE2NzM4NjI1MDYsImV4cCI6MTY3Mzg2MjgwNiwiYXVkIjoiaHR0cHM6Ly93d3cub2JvcnRlY2guaW8vIiwiaXNzIjoiT2JvcnRlY2ggQmxvY2tjaGFpbiIsInN1YiI6ImFkbWluQG9ib3J0ZWNoLmlvIn0.I2zy2XRHSLMSMnT7pM1PxEKx5FngCRm_9yZjOdPborLcqqXzZlILdHA07p9Xe5g_rPYED1o_2PMBVBHN3jmW7g\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/auth/access-token",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"access-token"
+							]
+						},
+						"description": "In the third and last step, provide the OTP received on the user's registered mobile number along with the temporary token received in Step 2 in order to get an access token (JWT) valid for next 8 hours.\n\n| **Key** | **Value** | **Description** | **Required** |\n| --- | --- | --- | --- |\n| otp | \"703209\" | OTP will be generated after verification of Blockchain password.OTP will be send to registered user mobile number. | true |\n| tempToken | \"eyJhbGciOiJSUzI1NiIsInR5cC........jFoFA\" | temptoken will generate from Blockchain password verification | true |"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Project",
+			"item": [
+				{
+					"name": "Fetch projects",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/project/fetch-all",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"project",
+								"fetch-all"
+							]
+						},
+						"description": "Fetch all projects\n\nNeed jwt token in authorization section which is obtained from Blockchain password verification."
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch project selections",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"project_id\": 1521\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/project/fetch-project-selections",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"project",
+								"fetch-project-selections"
+							]
+						},
+						"description": "Update project selection\n\n| **Key** | **Value** | **Description** | **Required** |\n| --- | --- | --- | --- |\n| project_id | 270 | unique id of project whose data can be referred from Fetch projects API | true |"
+					},
+					"response": []
+				},
+				{
+					"name": "Update project selection",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"project_name\": \"api test project\",\n  \"item_name\": \"api item1\",\n  \"container_name\": \"api grp1\", \n  \"devices\": [\n    {\n      \"device_name\": \"API test Device\",\n      \"tag\": \"API test Device\"\n    }\n  ],\n  \"group_name\": \"api grp3\",\n  \"truck_name\": \"api grp2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/project/update-selection",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"project",
+								"update-selection"
+							]
+						},
+						"description": "Update project selection\n\n| **Key** | **Value** | **Description** | **Required** |\n| --- | --- | --- | --- |\n| project_name | \"api test project\" | Name of the project | true |\n| item_name | \"api item1\" | Item Name from the item list | true |\n| container_name | \"api grp1\" | Container Name | true |\n| devices | \\[{  <br>\"device_name\": \"API test Device\",  <br>\"tag\": \"API test Device\"  <br>}\\] | Devices from the Devices List | false |\n| group_name | \"api grp3\" | Group Name | true |\n| truck_name | \"api grp2\" | Truck name | true |\n| selectionTemperatureArray | \\[ { \"temperature_alert_min\": 0, \"temperature_alert_max\": 8, \"temperature_alert_interval\": 7, \"temperature_allowed_occurances\": 5, \"humidity_alert_min\": 5, \"humidity_alert_max\": 1, \"humidity_alert_interval\": 1, \"humidity_allowed_occurances\": 0, \"ambience_threshold\": 44 } \\] |  | false |\n| item_is_start | null | Item Start Date | false |\n| item_start_date_time | null | Item End Date | false |"
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch submission details (Events, Documents and PDCs) for a project",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/project/fetch-submission-details/1508",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"project",
+								"fetch-submission-details",
+								"1508"
+							]
+						},
+						"description": "Fetch events and documents of a project by the numeric ID of the project"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Project-event",
+			"item": [
+				{
+					"name": "Add project event (Event)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "project_id",
+									"value": "1521",
+									"type": "text"
+								},
+								{
+									"key": "pdcName",
+									"value": "oboyftkuu",
+									"type": "text"
+								},
+								{
+									"key": "event_id",
+									"value": "JCpI1wyb",
+									"type": "text"
+								},
+								{
+									"key": "itemName",
+									"value": "110i",
+									"type": "text"
+								},
+								{
+									"key": "itemIds",
+									"value": "[{\"itemID\":\"110i\",\"container_name\":\"g110\"}]",
+									"type": "text"
+								},
+								{
+									"key": "due_date",
+									"value": "2023-11-18 18:30:00",
+									"type": "text"
+								},
+								{
+									"key": "document_deadline",
+									"value": "168",
+									"type": "text"
+								},
+								{
+									"key": "title",
+									"value": "SECOND TEST API",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "SECOND TEST API",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "Mongolia",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/Users/obortech/Downloads/783px-Test-Logo.svg.png"
+								},
+								{
+									"key": "groupName",
+									"value": "No Group 3",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "truckName",
+									"value": "No Group 2",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "containerName",
+									"value": "0104g",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "accept_users",
+									"value": "obo9876,usr9648",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "event_users",
+									"value": "obo9876,usr9648",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/project-event/add",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"project-event",
+								"add"
+							]
+						},
+						"description": "Add new project event\n\n| **Key** | **Value** | **Description** | **Required** |\n| --- | --- | --- | --- |\n| event_id | v3qn9P3u | Unique id of events,The value can be selected from Fetch projects events and documents List API. | true |\n| due_date | 2022-11-18 18:30:00 | Due Date of the event | true |\n| document_deadline | 168 | Deadline of the document | true |\n| title | New event | Title of the Event | true |\n| description | Lorem ipsum | Description of the event | true |\n| location | Delhi | Location | true |\n| file | /home/Documents/image.png | Select a file. | true |\n| project_id | 270 | id of project.The data can be selected from Fetch project selection Api using key \"project_id\" | true |\n| itemIds | \\[{\"itemID\":\"API Item\",\"container_name\":\"API GRP1\"}\\] | itemID: Name of the item  <br>container_name:Name of the container | true |\n| groupName | API GRP3 | Name of Group 3.The data can be selected from Fetch project selection Api using key \"groupID\" | true |\n| truckName | API GRP2 | Name of Group 2.The data can be selected from Fetch project selection Api using key \"truckID\" | true |\n| containerName | API GRP1 | Name of Group 1.The data can be selected from Fetch project selection Api using key \"containerID\" | true |\n| itemName | API Item | Name of Item.The data can be selected from Fetch project selection Api using key \"itemID\" | true |\n| pdcName | apipdc | Name of PDC. The data can be fetched from fetch project selections | true |\n| accept_users | obo9876,usr9648 | users who can accept the event. | true |\n| event_users | obo9876,usr9648 | user who can see the event. | true |"
+					},
+					"response": []
+				},
+				{
+					"name": "Add project event (Document)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdOYW1lIjoib2JvcnRlY2giLCJkZXBhcnRtZW50IjoiYmxvY2tjaGFpbiIsInVzZXJOYW1lIjoib2JvOTg3NiIsInVuaXF1ZUlkIjoib2JvOTg3NiIsInBob25lIjoiNzM0Mjc2OTk4MiIsIm9yZyI6Im9ib3J0ZWNoIiwibmFtZSI6Im9ibzk4NzYiLCJpYXQiOjE2NzM1Nzc4ODEsImV4cCI6MTY3MzYwNjY4MSwiYXVkIjoiaHR0cHM6Ly93d3cub2JvcnRlY2guaW8vIiwiaXNzIjoiT2JvcnRlY2ggQmxvY2tjaGFpbiIsInN1YiI6ImFkbWluQG9ib3J0ZWNoLmlvIn0.eqPQvjHT2ZTDBu_6tHznUgOq19te3s-zWMD7zLZ7at4iA78v9E4yUgbacrmy4Xt_i1TgHqFaZdk5q1D4Q4NPNw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "event_id",
+									"value": "opujyCoc",
+									"type": "text"
+								},
+								{
+									"key": "due_date",
+									"value": "2023-11-18 18:30:00",
+									"type": "text"
+								},
+								{
+									"key": "document_deadline",
+									"value": "168",
+									"type": "text"
+								},
+								{
+									"key": "title",
+									"value": "Single event with pdc",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Single event with pdc",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "Mongolia",
+									"type": "text"
+								},
+								{
+									"key": "project_id",
+									"value": "1508",
+									"type": "text"
+								},
+								{
+									"key": "itemIds",
+									"value": "[{\"itemID\":\"104\",\"container_name\":\"0104g\"}]",
+									"type": "text"
+								},
+								{
+									"key": "groupName",
+									"value": "No Group 3",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "truckName",
+									"value": "No Group 2",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "containerName",
+									"value": "0104g",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "itemName",
+									"value": "104",
+									"type": "text"
+								},
+								{
+									"key": "pdcName",
+									"value": "obozzthdf",
+									"type": "text"
+								},
+								{
+									"key": "accept_users",
+									"value": "obo9876,usr9648",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "event_users",
+									"value": "obo9876,usr9648",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/home/saurabh/Desktop/dock-check.pdf"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/project-event/add",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"project-event",
+								"add"
+							]
+						},
+						"description": "Add new project event\n\n| **Key** | **Value** | **Description** | **Required** |\n| --- | --- | --- | --- |\n| event_id | v3qn9P3u | Unique id of Documents.The value can be selected from Fetch projects events and documents List | true |\n| due_date | 2022-11-18 18:30:00 | Due Date of the Document | true |\n| document_deadline | 168 | Deadline of the document | true |\n| title | New event | Title of the Document | true |\n| description | Lorem ipsum | Description of the Document | true |\n| location | Delhi | Location | true |\n| file | /home/Documents/image.png | Path of the file | true |\n| project_id | 270 | id of project.The data can be selected from Fetch project selection Api using key \"project_id\" | true |\n| itemIds | \\[{\"itemID\":\"API Item\",\"container_name\":\"API GRP1\"}\\] | itemID: Name of the item  <br>container_name:Name of the container | true |\n| event_category_id | 124 | Id of Document categories.The value can be selected from Fetch projects events and documents List | true |\n| groupName | API GRP3 | Name of Group 3.The data can be selected from Fetch project selection Api using key \"groupID\" | true |\n| truckName | API GRP2 | Name of Group 2.The data can be selected from Fetch project selection Api using key \"truckID\" | true |\n| containerName | API GRP1 | Name of Group 1.The data can be selected from Fetch project selection Api using key \"containerID\" | true |\n| itemName | API Item | Name of Item.The data can be selected from Fetch project selection Api using key \"itemID\" | true |\n| pdcName | apipdc | Name of PDC. The data can be fetched from fetch project selections | true |\n| accept_users | obo9876,usr9648 | users who can accept | true |\n| event_users | obo9876,usr9648 | All event users | true |"
+					},
+					"response": []
+				},
+				{
+					"name": "Allow event submission",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "<Bearer Token>",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"orgName\": \"obortech\",\n  \"userName\": \"obo9876\",\n  \"eventName\": \"EVENT_v3qn9P3u\",\n  \"pdc\": \"apitestprojectsodwiyjp\",\n  \"orgs\": [\n    \"ObortechMSP\"\n  ],\n  \"users\": [\n    \"obo9876\"\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/events/submission/allow/:eventName",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"events",
+								"submission",
+								"allow",
+								":eventName"
+							],
+							"variable": [
+								{
+									"key": "eventName",
+									"value": "EVENT_v3qn9P3u",
+									"description": "(Required) Name of the event submission"
+								}
+							]
+						},
+						"description": "The event submission can be allowed to the specified organizations and users\n\n| Key | **Value** | Description | **Required** |\n| --- | --- | --- | --- |\n| orgName | \"obortech\" | Organization Name.The value can be obtained from key \"name\" inside organization object in Fetch project selection API's response | true |\n| userName | \"obo9876\" | Unique Id.The value can be selected from key \"unique_id\" inside organization object in Fetch project selection API's response | true |\n| eventName | \"EVENT_v3qn9P3u\" |  | true |\n| pdc | \"apitestprojectsodwiyjp\" | Name of PDC. The data can be fetched from fetch project selections | true |\n| orgs | \\[\"ObortechMSP\" \\] | username of users in that project id.The value can be selected from key \"username\" in users array in Fetch project selection API | true |\n| users | \\[ \"obo9876\"\\] | Unique Id.The value can be selected from key \"username\" inside users array in Fetch project selection API's response | true |"
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch projects events",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"limit\": 20,\n  \"offset\": 0,\n  \"project_id\": 1508\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/project-event/fetch",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"project-event",
+								"fetch"
+							]
+						},
+						"description": "| **Key** | **Value** | **Description** | **Required** |\n| --- | --- | --- | --- |\n| container_id | null | Id of container.It should be null to fetch alI data.The data is fetch from Fetch project selections from the key value of container_id | false |\n| end_date_time | \"2022-11-03 06:07:09\" | The data is fetch from Fetch project selections from the key value of completed_date | false |\n| eventId | 0 |  | false |\n| group_id | null | It should be null to fetch alI data.The data is fetch from Fetch project selections from the key value of group_id | false |\n| item_id | null | It should be null to fetch alI data.The data is fetch from Fetch project selections from the key value of item_id | false |\n| limit | 20 | limit to fetch number of data at a time | true |\n| offset | 0 | the starting index of the data | true |\n| project_id | 1192 | The data is fetch from Fetch project selections from the key value of project_id | true |\n| searchEventId | \\[\\] | Filter events according to eventId | false |\n| search_text | \"postman\" | Filter events according to title. | false |\n| start_date_time | 2022-10-20 09:25:26 | Start Date of the selected items. Also the data can be decided from Fetch project selections from the key value of start_date_time | false |\n| truck_id | null | It Should be null to fetch all data.The data is fetch from Fetch project selections from the key value of truck_id | false |\n\nFetch all project events"
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch projects events and logs",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdOYW1lIjoib2JvcnRlY2giLCJkZXBhcnRtZW50IjoiYmxvY2tjaGFpbiIsInVzZXJOYW1lIjoib2JvMjM2NCIsInVuaXF1ZUlkIjoib2JvMjM2NCIsInBob25lIjoiNzk0NjI2ODQ2MiIsIm9yZyI6Im9ib3J0ZWNoIiwibmFtZSI6Im9ibzIzNjQiLCJpYXQiOjE2NzI2NjkyNTMsImV4cCI6MTY3MjY3Mjg1MywiYXVkIjoiaHR0cHM6Ly93d3cub2JvcnRlY2guaW8vIiwiaXNzIjoiT2JvcnRlY2ggQmxvY2tjaGFpbiIsInN1YiI6ImFkbWluQG9ib3J0ZWNoLmlvIn0.ZpxQomzIl0RPon77T2tXxmDFqAyugkiXNL_aackj-jK13Abu4ZuiTaOH33ujkm1hk3ud6U-b-fkgMdcNLFM93g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"project_name\": \"api test project\",\n  \"group_name\": \"api grp3\",\n  \"truck_name\": \"api grp2\",\n  \"container_name\": \"api grp1\",\n  \"device_name\": \"dev001\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/project-event/fetch/:data_type",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"project-event",
+								"fetch",
+								":data_type"
+							],
+							"variable": [
+								{
+									"key": "data_type",
+									"value": "events",
+									"description": "(Required) "
+								}
+							]
+						},
+						"description": "Fetch project events and logs based on group name, truck name, container name and device name.\n\nThe value of the '**data_type**' path parameter can be events, humidity, temperature and location.\n\nPayload sample to fetch **events**  \n{  \n\"project_name\":\"api project\",  \n\"group_name\":\"api group 1\",  \n\"truck_name\":\"api group 2\",  \n\"container_name\":\"api group 3\",  \n\"device_name\":\"rcr52729\",  \n\"orgName\":\"obortech\",  \n\"userName\":\"obo9876\"  \n}\n\nPayload sample to fetch **humidity, temperature and location logs**:  \n{  \n\"project_name\":\"IOT\",  \n\"item_name\":\"Task\",  \n\"device_name\":\"rcr52729\",  \n\"orgName\":\"obortech\",  \n\"userName\":\"obo1589\"  \n}\n\n| **Key** | **Value** | **Description** | **Value** |\n| --- | --- | --- | --- |\n| project_name | \"api test project\" | Name of the project.The value can be obtained from key \"projectName\" in Fetch projects events API's response | true |\n| group_name | \"api grp3\" | Group 3 Value.The value can be obtained from key \"groupName\" in Fetch projects events API's response | false |\n| truck_name | \"api grp2\" | Group 2 Value.The value can be obtained from key \"truckName\" in Fetch projects events API's response | false |\n| container_name | \"api grp1\" | Group 1 Value.The value can be obtained from key \"containerName\" in Fetch projects events API's response | false |\n| device_name | \"dev001\" | Device Name.The value can be obtained from key \"deviceName\" in Fetch projects events API's response | false |"
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch projects events details",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/project-event/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"project-event",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "unzrgm3rj",
+									"description": "(Required) Unique ID of the project event"
+								}
+							]
+						},
+						"description": "Fetch project event details by the unique ID of the project event\n\nParams\n\n| **Key** | **Value** | **Description** | **Required** |\n| --- | --- | --- | --- |\n| id | unzrgm3rj | Unique id of project event.The data can be selected from fetch projects events and logs from key \"event_submission_id\" | True |"
+					},
+					"response": []
+				},
+				{
+					"name": "Accept/Reject project event",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdOYW1lIjoiZm9vZHMiLCJkZXBhcnRtZW50IjoiYmxvY2tjaGFpbiIsInVzZXJOYW1lIjoiZm9vNDAwNSIsInVuaXF1ZUlkIjoiZm9vNDAwNSIsIm9yZyI6ImZvb2RzIiwibmFtZSI6ImZvbzQwMDUiLCJpYXQiOjE2NzQ2NDg0MTEsImV4cCI6MTY3NDY1MjAxMSwiYXVkIjoiaHR0cHM6Ly93d3cub2JvcnRlY2guaW8vIiwiaXNzIjoiT2JvcnRlY2ggQmxvY2tjaGFpbiIsInN1YiI6ImFkbWluQG9ib3J0ZWNoLmlvIn0.RclAgSP3kiUu23jkMEgCnNFREvlUpzPKMtCrpo0KpLfi-jRKzQqsSfj_Ht2P_doXNdXfkmD0cl1itKVn4ogEAg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/project-event/:id?action=accept",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"project-event",
+								":id"
+							],
+							"query": [
+								{
+									"key": "action",
+									"value": "accept",
+									"description": "The action can be 'accept' or 'reject'"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "jtrlunf0p",
+									"description": "(Required) Unique ID of the project event"
+								}
+							]
+						},
+						"description": "Accept or reject the specified project event\n\nparams\n\n| **Key** | **Value** | **Description** | **Required** |\n| --- | --- | --- | --- |\n| action | accept | approval status.It can be accept or reject | true |\n| id | vre87blon | event_submission_id of the project.The value can be selected from \"event_submission_id\" key from fetch projects events and documents. | true |"
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch projects sub events",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdOYW1lIjoib2JvcnRlY2giLCJkZXBhcnRtZW50IjoiYmxvY2tjaGFpbiIsInVzZXJOYW1lIjoib2JvMjM2NCIsInVuaXF1ZUlkIjoib2JvMjM2NCIsInBob25lIjoiNzk0NjI2ODQ2MiIsIm9yZyI6Im9ib3J0ZWNoIiwibmFtZSI6Im9ibzIzNjQiLCJpYXQiOjE2NzI2ODY2NjAsImV4cCI6MTY3MjY5MDI2MCwiYXVkIjoiaHR0cHM6Ly93d3cub2JvcnRlY2guaW8vIiwiaXNzIjoiT2JvcnRlY2ggQmxvY2tjaGFpbiIsInN1YiI6ImFkbWluQG9ib3J0ZWNoLmlvIn0.ULE8tBZQq2BslGiAsMrm7fOztFkKyCEBmA_Sjb3vRlbiY-6AuRoMW9bvekj4OMCoIqZUBc8__K5KPEie3DnTbA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/project-event/:id/project-sub-events",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"project-event",
+								":id",
+								"project-sub-events"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "270",
+									"description": "(Required) "
+								}
+							]
+						},
+						"description": "Fetch sub events of a project event by the unique ID of the project event\n\nparams\n\n| **Key** | **Value** | **Description** | **Required** |\n| --- | --- | --- | --- |\n| id | 1485 | Project Id.The id can be selected from Fetch projects APi | true |"
+					},
+					"response": []
+				},
+				{
+					"name": "Add project event comment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"comment\": \"test postman\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/project-event/63d0e364478f1300094ebc39/comment",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"project-event",
+								"63d0e364478f1300094ebc39",
+								"comment"
+							]
+						},
+						"description": "Add comment to the specific project event\n\n| **Key** | **Value** | **Description** | **Required** |\n| --- | --- | --- | --- |\n| comment | \"Test comment\" | Comment to be added to project event | true |"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Project-logs",
+			"item": [
+				{
+					"name": "Fetch Latest Stats",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/project-logs/latest-stats?project_id=102&item_id=37&device_id=22",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"project-logs",
+								"latest-stats"
+							],
+							"query": [
+								{
+									"key": "project_id",
+									"value": "102",
+									"description": "Numeric ID of the project"
+								},
+								{
+									"key": "item_id",
+									"value": "37",
+									"description": "Numeric ID of the item"
+								},
+								{
+									"key": "device_id",
+									"value": "22",
+									"description": "Numeric ID of the device"
+								}
+							]
+						},
+						"description": "Retrieve Latest statistics for provided project, item and device\n\nQuery Params\n\n| **Key** | **Value** | **Description** | **Required** |\n| --- | --- | --- | --- |\n| project_id | 102 | Unique ID of the project.The data can be selected from Fetch project selection and logs Api using key \"project_id\" | true |\n| item_id | 37 | Unique ID of the item.The data can be selected from Fetch project selection and logs Api using key \"item_id\" | true |\n| device_id | 22 | Unique ID of the device.The data can be selected from Fetch project selection and logs Api using key \"device_id\" | true |"
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Location Logs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/project-logs/location?project_id=146&item_id=93",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"project-logs",
+								"location"
+							],
+							"query": [
+								{
+									"key": "project_id",
+									"value": "146",
+									"description": "Numeric ID of the project"
+								},
+								{
+									"key": "item_id",
+									"value": "93",
+									"description": "Numeric ID of the item"
+								}
+							]
+						},
+						"description": "Fetch location logs for the specified project and item\n\n| **Key** | **Value** | **Description** | **Required** |\n| --- | --- | --- | --- |\n| project_id | 102 | Unique ID of the project.The data can be selected from Fetch project selection and logs Api using key \"project_id\" | true |\n| item_id | 37 | Unique ID of the item.The data can be selected from Fetch project selection and logs Api using key \"item_id\" | true |"
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Temperature Logs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/project-logs/temperature?item_id=37&device_id=22&project_id=102&start_date=2022-09-15 10:28:02&end_date=2022-09-15 12:24:04",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"project-logs",
+								"temperature"
+							],
+							"query": [
+								{
+									"key": "item_id",
+									"value": "37",
+									"description": "Numeric ID of the item"
+								},
+								{
+									"key": "device_id",
+									"value": "22",
+									"description": "Numeric ID of the device"
+								},
+								{
+									"key": "project_id",
+									"value": "102",
+									"description": "Numeric ID of the project"
+								},
+								{
+									"key": "start_date",
+									"value": "2022-09-15 10:28:02",
+									"description": "Start date"
+								},
+								{
+									"key": "end_date",
+									"value": "2022-09-15 12:24:04",
+									"description": "End date"
+								}
+							]
+						},
+						"description": "Fetch temperature logs filtered by item id, device id, project id, start date and end date.\n\n| **Key** | **Value** | **Description** | **Required** |\n| --- | --- | --- | --- |\n| project_id | 102 | Unique ID of the project.The data can be selected from Fetch project selection and logs Api using key \"project_id\" | true |\n| item_id | 37 | Unique ID of the item.The data can be selected from Fetch project selection and logs Api using key \"item_id\" | true |\n| device_id | 22 | Unique ID of the device.The data can be selected from Fetch project selection and logs Api using key \"device_id\" | true |\n| start_date | 2022-09-15 10:28:02 | Start Date | true |\n| end_date | 2022-09-15 12:24:04 | End Date | true |"
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Humidity Logs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/project-logs/humidity?item_id=37&device_id=22&project_id=102&start_date=2022-09-15 10:28:02&end_date=2022-09-15 12:24:04",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"project-logs",
+								"humidity"
+							],
+							"query": [
+								{
+									"key": "item_id",
+									"value": "37",
+									"description": "Numeric ID of the item"
+								},
+								{
+									"key": "device_id",
+									"value": "22",
+									"description": "Numeric ID of the device"
+								},
+								{
+									"key": "project_id",
+									"value": "102",
+									"description": "Numeric ID of the project"
+								},
+								{
+									"key": "start_date",
+									"value": "2022-09-15 10:28:02",
+									"description": "Start date"
+								},
+								{
+									"key": "end_date",
+									"value": "2022-09-15 12:24:04",
+									"description": "End date"
+								}
+							]
+						},
+						"description": "Fetch humidity logs filtered by item id, device id, project id, start date and end date.\n\n| **Key** | **Value** | **Description** | **Required** |\n| --- | --- | --- | --- |\n| project_id | 102 | Unique ID of the project.The data can be selected from Fetch project selection and logs Api using key \"project_id\" | true |\n| item_id | 37 | Unique ID of the item.The data can be selected from Fetch project selection and logs Api using key \"item_id\" | true |\n| device_id | 22 | Unique ID of the device.The data can be selected from Fetch project selection and logs Api using key \"device_id\" | true |\n| start_date | 2022-09-15 10:28:02 | Start Date | true |\n| end_date | 2022-09-15 12:24:04 | End Date | true |"
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Project Stations",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/project-station?container_id=77&item_id=93&project_id=146&device_id=74",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"project-station"
+							],
+							"query": [
+								{
+									"key": "container_id",
+									"value": "77",
+									"description": "Numeric ID of the container"
+								},
+								{
+									"key": "item_id",
+									"value": "93",
+									"description": "Numeric ID of the item"
+								},
+								{
+									"key": "project_id",
+									"value": "146",
+									"description": "Numeric ID of the project"
+								},
+								{
+									"key": "device_id",
+									"value": "74",
+									"description": "Numeric ID of the device"
+								}
+							]
+						},
+						"description": "Fetch station details for a project\n\n| **Key** | **Value** | **Description** | **Required** |\n| --- | --- | --- | --- |\n| project_id | 102 | Unique ID of the project.The data can be selected from Fetch project selection and logs Api using key \"project_id\" | true |\n| item_id | 37 | Unique ID of the item.The data can be selected from Fetch project selection and logs Api using key \"item_id\" | true |\n| device_id | 22 | Unique ID of the device.The data can be selected from Fetch project selection and logs Api using key \"device_id\" | true |\n| container_id | 77 | Unique ID of the container.The data can be selected from Fetch project selection and logs Api using key \"container_id\" | true |"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Device",
+			"item": [
+				{
+					"name": "Fetch Devices",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/device?limit=10&offset=0&page=0",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"device"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "offset",
+									"value": "0"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								}
+							]
+						},
+						"description": "Fetch details of all the devices"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdOYW1lIjoiZm9vZHMiLCJkZXBhcnRtZW50IjoiYmxvY2tjaGFpbiIsInVzZXJOYW1lIjoiZm9vNTI5NiIsInVuaXF1ZUlkIjoiZm9vNTI5NiIsInBob25lIjoiNzM3NjQ5NDM5OSIsIm9yZyI6ImZvb2RzIiwibmFtZSI6ImZvbzUyOTYiLCJpYXQiOjE2NzQ2MzY5NzcsImV4cCI6MTY3NDY2NTc3NywiYXVkIjoiaHR0cHM6Ly93d3cub2JvcnRlY2guaW8vIiwiaXNzIjoiT2JvcnRlY2ggQmxvY2tjaGFpbiIsInN1YiI6ImFkbWluQG9ib3J0ZWNoLmlvIn0.B-d4FQLfmTJtNX5ruHcKEs_Ik5kQLmL1fiS7XZoZIjPz6UUPcmuWMgQ7eC6CiPioWxn4rxp_khv61rSlZunleA",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://a69q8jftwe.execute-api.ap-southeast-1.amazonaws.com/uat"
+		},
+		{
+			"key": "jwt",
+			"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdOYW1lIjoib2JvcnRlY2giLCJkZXBhcnRtZW50IjoiYmxvY2tjaGFpbiIsInVzZXJOYW1lIjoib2JvOTg3NiIsInVuaXF1ZUlkIjoib2JvOTg3NiIsInBob25lIjoiNzM0Mjc2OTk4MiIsIm9yZyI6Im9ib3J0ZWNoIiwibmFtZSI6Im9ibzk4NzYiLCJpYXQiOjE2NzMyODQzNzIsImV4cCI6MTY3MzMxMzE3MiwiYXVkIjoiaHR0cHM6Ly93d3cub2JvcnRlY2guaW8vIiwiaXNzIjoiT2JvcnRlY2ggQmxvY2tjaGFpbiIsInN1YiI6ImFkbWluQG9ib3J0ZWNoLmlvIn0.KjRb0h7OwiJeMU2XAtBrdtduSVHU7oQpu3OpTBPRXvZ99xam9_SYKtpyhzuf8kIJCZsbcnB_oJ5G_PNXv31OLA"
+		}
+	]
+}

@@ -1,0 +1,7 @@
+
+#SPDX-License-Identifier: Apache-2.0
+.dockerignore
+.git
+node_modules/
+dist/
+.next/
